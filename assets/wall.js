@@ -56,6 +56,7 @@
     if (!cache.has(src)) cache.set(src, new Promise(res => { const im = new Image(); im.decoding = 'async'; im.onload = im.onerror = () => res(); im.src = src; }));
     return cache.get(src);
   };
+  const afterLoad = fn => (document.readyState === 'complete' ? setTimeout(fn, 1500) : addEventListener('load', () => setTimeout(fn, 1500), { once: true }));
   const show = async item => {
     const next = slots[1 - front];
     const img = next.querySelector('img');
@@ -84,7 +85,8 @@
     setName = name; idx = 0;
     const list = cfg.sets[name];
     show(list[0]);
-    if (!still && list[1]) preload(list[1].src);
+    // 次の1枚の先読みは、ページの読み込みが終わってから（初回ロードを軽くする）
+    if (!still && list[1]) afterLoad(() => preload(list[1].src));
     restart();
     stage.dataset.set = name;
   };
