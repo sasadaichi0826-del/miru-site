@@ -642,3 +642,13 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
 }
 .font-shuwa{font-family:"ShuwaMaru","MiruHead","Hiragino Maru Gothic ProN",sans-serif!important}
 .sub-h[hidden],.schedule[hidden]{display:none}
+
+/* ===== 自己紹介の新素材（2026-11-26 追加素材） ===== */
+.char-tabs [role=tab]{flex-direction:row;align-items:center;gap:10px;padding:6px 18px 6px 6px}
+.char-tab-tx{display:flex;flex-direction:column;align-items:flex-start}
+.char-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;object-position:center 18%;background:var(--char-soft);border:2px solid #fff;box-shadow:0 2px 6px #2e1b4f22}
+/* 立ち絵：透過のまま背景に載せ、足元をそろえる。身長差（137cm：128cm）を表示の高さに反映 */
+.char-portrait{width:auto;max-width:100%;height:min(560px,70vh);object-fit:contain;object-position:center bottom}
+.char-portrait-tsukimi{height:calc(min(560px,70vh) * 128 / 137)}
+.char-side{display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+@media (max-width:860px){.char-portrait{height:min(420px,56vh)}.char-portrait-tsukimi{height:calc(min(420px,56vh) * 128 / 137)}}

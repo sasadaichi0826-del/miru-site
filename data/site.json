@@ -119,6 +119,390 @@
   ],
   "gallery": [
     {
+      "id": "daily24-01",
+      "title": "朝の電車",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "朝の電車",
+      "src": "assets/gallery/daily24-01.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-01.webp",
+      "width": 1146,
+      "height": 1254
+    },
+    {
+      "id": "daily24-02",
+      "title": "青い信号",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "青い信号",
+      "src": "assets/gallery/daily24-02.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-02.webp",
+      "width": 1146,
+      "height": 1254
+    },
+    {
+      "id": "daily24-03",
+      "title": "開店前のパン屋",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "開店前のパン屋",
+      "src": "assets/gallery/daily24-03.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-03.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-04",
+      "title": "メロンパン",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "メロンパン",
+      "src": "assets/gallery/daily24-04.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-04.webp",
+      "width": 1146,
+      "height": 1254
+    },
+    {
+      "id": "daily24-05",
+      "title": "先輩の辛い選択",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "先輩の辛い選択",
+      "src": "assets/gallery/daily24-05.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-05.webp",
+      "width": 1146,
+      "height": 1254
+    },
+    {
+      "id": "daily24-06",
+      "title": "回転寿司",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "回転寿司",
+      "src": "assets/gallery/daily24-06.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-06.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-07",
+      "title": "おでんの大根",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "おでんの大根",
+      "src": "assets/gallery/daily24-07.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-07.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-08",
+      "title": "地球の宝物庫",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "地球の宝物庫",
+      "src": "assets/gallery/daily24-08.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-08.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-09",
+      "title": "プリクラの目",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "プリクラの目",
+      "src": "assets/gallery/daily24-09.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-09.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-10",
+      "title": "エスカレーター",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "エスカレーター",
+      "src": "assets/gallery/daily24-10.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-10.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-11",
+      "title": "試着待ちの先輩",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "試着待ちの先輩",
+      "src": "assets/gallery/daily24-11.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-11.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-12",
+      "title": "洗濯物とぺーたん",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "洗濯物とぺーたん",
+      "src": "assets/gallery/daily24-12.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-12.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-13",
+      "title": "怒る掃除機",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "怒る掃除機",
+      "src": "assets/gallery/daily24-13.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-13.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-14",
+      "title": "昼寝の角度",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "昼寝の角度",
+      "src": "assets/gallery/daily24-14.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-14.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-15",
+      "title": "140年の練習",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "140年の練習",
+      "src": "assets/gallery/daily24-15.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-15.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-16",
+      "title": "雪の味",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "雪の味",
+      "src": "assets/gallery/daily24-16.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-16.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-17",
+      "title": "地上の星",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "地上の星",
+      "src": "assets/gallery/daily24-17.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-17.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-18",
+      "title": "傘の音",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "傘の音",
+      "src": "assets/gallery/daily24-18.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-18.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-19",
+      "title": "年越しそば",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "年越しそば",
+      "src": "assets/gallery/daily24-19.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-19.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-20",
+      "title": "先輩は月",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "先輩は月",
+      "src": "assets/gallery/daily24-20.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-20.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-21",
+      "title": "冷蔵庫のぺーたん",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "冷蔵庫のぺーたん",
+      "src": "assets/gallery/daily24-21.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-21.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-22",
+      "title": "食べられた三日月",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "食べられた三日月",
+      "src": "assets/gallery/daily24-22.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-22.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-23",
+      "title": "パンの耳",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "パンの耳",
+      "src": "assets/gallery/daily24-23.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-23.webp",
+      "width": 1254,
+      "height": 1254
+    },
+    {
+      "id": "daily24-24",
+      "title": "好きだから",
+      "category": "みるとつきみの毎日",
+      "note": "",
+      "alt": "好きだから",
+      "src": "assets/gallery/daily24-24.webp",
+      "drive": "",
+      "thumb": "assets/gallery/daily24-24.webp",
+      "width": 1146,
+      "height": 1254
+    },
+    {
+      "id": "surprise-01",
+      "title": "アイスを選ぶつきみ",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "アイスを選ぶつきみ",
+      "src": "assets/gallery/surprise-01.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-01.webp",
+      "width": 1004,
+      "height": 1254
+    },
+    {
+      "id": "surprise-02",
+      "title": "洗濯機を観察するみる",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "洗濯機を観察するみる",
+      "src": "assets/gallery/surprise-02.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-02.webp",
+      "width": 1004,
+      "height": 1254
+    },
+    {
+      "id": "surprise-03",
+      "title": "つり革に届く主義",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "つり革に届く主義",
+      "src": "assets/gallery/surprise-03.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-03.webp",
+      "width": 1004,
+      "height": 1254
+    },
+    {
+      "id": "surprise-04",
+      "title": "水族館の温度差",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "水族館の温度差",
+      "src": "assets/gallery/surprise-04.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-04.webp",
+      "width": 1254,
+      "height": 836
+    },
+    {
+      "id": "surprise-05",
+      "title": "激辛フェスで平然",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "激辛フェスで平然",
+      "src": "assets/gallery/surprise-05.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-05.webp",
+      "width": 1254,
+      "height": 836
+    },
+    {
+      "id": "surprise-06",
+      "title": "月面のこたつ",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "月面のこたつ",
+      "src": "assets/gallery/surprise-06.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-06.webp",
+      "width": 1254,
+      "height": 836
+    },
+    {
+      "id": "surprise-07",
+      "title": "ダンボールの観察基地",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "ダンボールの観察基地",
+      "src": "assets/gallery/surprise-07.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-07.webp",
+      "width": 1004,
+      "height": 1254
+    },
+    {
+      "id": "surprise-08",
+      "title": "夜の観覧車",
+      "category": "予想外の組み合わせ",
+      "note": "",
+      "alt": "夜の観覧車",
+      "src": "assets/gallery/surprise-08.webp",
+      "drive": "",
+      "thumb": "assets/gallery/surprise-08.webp",
+      "width": 1004,
+      "height": 1254
+    },
+    {
       "title": "またあしたって、",
       "category": "みるの日常",
       "note": "",
@@ -2710,8 +3094,8 @@
       "lead": "はじめまして、星麦みるです。地球の「なんで？」を、あつめています。",
       "about": "地球観察ちゅうの宇宙人。日本語も、地球の常識も勉強中。パンや甘いもの、ゲーム、サウナがだいすきです。相棒のぺーたんと、食べたり遊んだりしながら調査中。",
       "portrait": {
-        "src": "assets/img/miru-front.webp",
-        "alt": "ラベンダーのツインテール、濃紫のベレー帽とリボン、パンの袖飾りとペンギンバッグを身につけた星麦みる"
+        "src": "assets/img/characters/miru-intro-full.webp",
+        "alt": "片手を振ってあいさつする、ラベンダーのツインテールとベレー帽姿の星麦みる。バッグからぺーたんが顔を出している。"
       },
       "data": [
         {
@@ -2792,7 +3176,8 @@
         "outfit-10-starry",
         "outfit-11-pilot",
         "outfit-12-stage"
-      ]
+      ],
+      "avatar": "assets/img/characters/miru-intro-bust-s.webp"
     },
     {
       "id": "tsukimi",
@@ -2810,8 +3195,8 @@
       "lead": null,
       "about": null,
       "portrait": {
-        "src": null,
-        "alt": ""
+        "src": "assets/img/characters/tsukimi-intro-full.webp",
+        "alt": "クリーム色のボブに三日月の髪飾り、無地の羽織と淡黄色のロングドレス姿で、静かにほほえむつきみ。"
       },
       "data": [
         {
@@ -2891,7 +3276,8 @@
         "selfie-knit-night-terrace",
         "selfie-seaside-fisheye",
         "selfie-warm-car"
-      ]
+      ],
+      "avatar": "assets/img/characters/tsukimi-intro-bust-s.webp"
     }
   ],
   "intro": {
@@ -2905,10 +3291,10 @@
   "relationship": {
     "_howto": "copy と qa は draft:true の間は本番に出ない（?draft=1 で確認できる）。本人確認が済んだら draft を外す。",
     "image": {
-      "src": "",
-      "drive": "1oWOoYgRVFrBFg210wbqC7EiPdqE8Fmtr",
-      "thumb": "assets/gallery/selfie-knit-night-terrace.webp",
-      "alt": "ニット姿で夜のテラス"
+      "src": "assets/img/relation/miru-tsukimi-relation-01.webp",
+      "drive": "",
+      "thumb": "assets/img/relation/miru-tsukimi-relation-01-tiny.webp",
+      "alt": "ベンチに座り、小さな葉っぱを見せるみると、穏やかに耳を傾けるつきみ。"
     },
     "copy": "観察の先輩と、後輩と。",
     "copyDraft": true,
@@ -2946,6 +3332,11 @@
     "sets": {
       "hero": [
         {
+          "src": "assets/wall/night-observation-01.webp",
+          "thumb": "assets/wall/night-observation-01-tiny.webp",
+          "alt": ""
+        },
+        {
           "src": "assets/wall/op-04.webp",
           "thumb": "assets/wall/op-04-tiny.webp",
           "alt": ""
@@ -2973,6 +3364,11 @@
       ],
       "music": [
         {
+          "src": "assets/wall/night-bubbles-01.webp",
+          "thumb": "assets/wall/night-bubbles-01-tiny.webp",
+          "alt": ""
+        },
+        {
           "src": "assets/wall/op-14.webp",
           "thumb": "assets/wall/op-14-tiny.webp",
           "alt": ""
@@ -2999,6 +3395,11 @@
         }
       ],
       "daily": [
+        {
+          "src": "assets/wall/daily-observation-01.webp",
+          "thumb": "assets/wall/daily-observation-01-tiny.webp",
+          "alt": ""
+        },
         {
           "src": "assets/wall/miru-cont-20261116-dew-001.webp",
           "thumb": "assets/wall/miru-cont-20261116-dew-001-tiny.webp",
@@ -3036,6 +3437,11 @@
         }
       ],
       "footer": [
+        {
+          "src": "assets/wall/footer-starlight-01.webp",
+          "thumb": "assets/wall/footer-starlight-01-tiny.webp",
+          "alt": ""
+        },
         {
           "src": "assets/wall/op-01.webp",
           "thumb": "assets/wall/op-01-tiny.webp",

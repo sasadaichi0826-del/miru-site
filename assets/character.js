@@ -59,12 +59,12 @@
         return `<div class="lore"><h4 class="char-sub"><span class="label">EARTH NOTES</span>地球観察ノート</h4><p class="lore-note">これは物語ではなく、日常の観察記録です。</p>${items.map(l => `<details><summary>${esc(l.title)}${badge(l)}</summary><p>${esc(l.body)}</p></details>`).join('')}</div>`;
       };
 
-      tabs.innerHTML = chars.map((c, i) => `<button type="button" role="tab" id="tab-${esc(c.id)}" aria-controls="panel-${esc(c.id)}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-id="${esc(c.id)}"><small>${esc(c.fileNo)}</small><span class="char-name">${esc(c.name)}</span></button>`).join('');
+      tabs.innerHTML = chars.map((c, i) => `<button type="button" role="tab" id="tab-${esc(c.id)}" aria-controls="panel-${esc(c.id)}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-id="${esc(c.id)}">${has(c.avatar) ? `<img class="char-avatar" src="${esc(c.avatar)}" alt="" width="48" height="48">` : ''}<span class="char-tab-tx"><small>${esc(c.fileNo)}</small><span class="char-name">${esc(c.name)}</span></span></button>`).join('');
       panels.innerHTML = chars.map((c, i) => {
         const portrait = c.portrait && has(c.portrait.src);
         const side = portrait || costumes(c).length;
         return `<div class="char-panel${side ? '' : ' no-portrait'}" role="tabpanel" id="panel-${esc(c.id)}" aria-labelledby="tab-${esc(c.id)}" tabindex="0"${i === 0 ? '' : ' hidden'}>
-          ${side ? `<div class="char-side">${portrait ? `<img class="char-portrait" src="${esc(c.portrait.src)}" alt="${esc(c.portrait.alt)}" loading="lazy">` : ''}${viewer(c)}</div>` : ''}
+          ${side ? `<div class="char-side">${portrait ? `<img class="char-portrait char-portrait-${esc(c.id)}" src="${esc(c.portrait.src)}" alt="${esc(c.portrait.alt)}" loading="lazy" decoding="async" width="948" height="1659">` : ''}${viewer(c)}</div>` : ''}
           <div class="file char-file">
             <span class="tape t1" aria-hidden="true"></span>
             <div class="file-head"><span>OBSERVER FILE</span><span>No. ${esc(c.fileNo)}</span></div>
@@ -178,7 +178,7 @@
       else {
         const nameOf = id => chars.find(c => c.id === id)?.name || id;
         relSec.querySelector('.rel-body').innerHTML = `
-          ${img ? `<figure class="rel-photo taped"><span class="tape t1" aria-hidden="true"></span><img src="${esc(imgSrc(img, 800))}" alt="${esc(img.alt)}" loading="lazy" referrerpolicy="no-referrer"></figure>` : ''}
+          ${img ? `<figure class="rel-photo taped"><span class="tape t1" aria-hidden="true"></span><img src="${esc(img.src || imgSrc(img, 800))}" alt="${esc(img.alt)}" loading="lazy" decoding="async" referrerpolicy="no-referrer"${img.thumb ? ` style="background:url('${esc(img.thumb)}') center/cover"` : ''}></figure>` : ''}
           <div class="rel-text">
             ${copyOk ? `<p class="rel-copy">${esc(rel.copy)}${badge({ draft: rel.copyDraft })}</p>` : ''}
             ${qa.length ? `<div class="rel-qa">${qa.map(x => `<div class="say from-${esc(x.from)}"><p class="who">${esc(nameOf(x.from))}${badge(x)}</p><p class="q">${esc(x.q)}</p><p class="a">${esc(x.a)}</p></div>`).join('')}</div>` : ''}
