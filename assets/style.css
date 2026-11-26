@@ -689,3 +689,8 @@ a:hover .ext,a:focus-visible .ext{transform:translate(2px,-2px)}
 .turntable .listen:active{transform:scale(.98);box-shadow:0 2px 0 #c77ba0}
 .turntable .listen:focus-visible,.btn:focus-visible{outline:2px solid var(--paper);box-shadow:0 0 0 4px var(--rose)}
 .catalog-page .track .play.ext{font-weight:900;color:var(--rose)}
+
+/* B-9：ヘッダーを正式ロゴ（横長・縁取りあり、昼夜どちらでも可）に */
+.logo{display:flex;align-items:center;line-height:0}
+.logo img{display:block;height:44px;width:auto}
+@media (max-width:860px){.logo img{height:38px}}
