@@ -20,7 +20,7 @@
 <link rel="preload" as="image" href="assets/img/miru-front.webp" fetchpriority="high">
 <link rel="preload" href="assets/fonts/MiruHead-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ShuwaMaru-Regular.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/style.css?v=assets-20261126">
+<link rel="stylesheet" href="assets/style.css?v=b6c-20261127">
 </head>
 <body>
 <a class="skip" href="#profile">本文へ移動</a>
@@ -79,7 +79,7 @@
   <section class="intro" id="intro" aria-label="はじめましての方へ"></section>
 
   <!-- 流れるフィルム帯 -->
-  <div class="film" aria-hidden="true"><div class="film-track" id="film-a"></div></div>
+  <div class="film-wrap"><div class="film" aria-hidden="true"><div class="film-track" id="film-a"></div></div></div>
 
   <!-- 01 キャラクター（id は外部リンク互換のため #profile のまま） -->
   <section id="profile" class="obs char-sec" data-no="01" data-character="miru" data-vert="はじめまして、地球。" data-reveal="lines">
@@ -149,7 +149,7 @@
     <div class="notes" id="note-list"></div>
   </section>
 
-  <div class="film reverse" aria-hidden="true"><div class="film-track" id="film-b"></div></div>
+  <div class="film-wrap"><div class="film reverse" aria-hidden="true"><div class="film-track" id="film-b"></div></div></div>
 
   <!-- 06 ギャラリー（Codex版のステージ＋一覧を継承） -->
   <section id="gallery" class="obs" data-no="06" data-vert="あたりまえの中に、まだ知らないこと。" data-reveal="tape">

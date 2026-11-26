@@ -652,3 +652,12 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
 .char-portrait-tsukimi{height:calc(min(560px,70vh) * 128 / 137)}
 .char-side{display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
 @media (max-width:860px){.char-portrait{height:min(420px,56vh)}.char-portrait-tsukimi{height:calc(min(420px,56vh) * 128 / 137)}}
+
+/* B-6：傾けたフィルム帯（104vw＋回転）が画面幅からはみ出していた。
+   帯を画面幅ちょうどの外枠で包み、はみ出す角だけを外枠で切る（ページ全体には overflow をかけない） */
+.film-wrap{width:100vw;margin-left:calc(50% - 50vw);overflow:hidden;padding:22px 0;margin-block:-22px 10px}
+.film-wrap .film{margin-bottom:0}
+/* B-6：スマホ幅では縦長の楕円が回転すると横幅を超えるため、真円にして回転しても幅が変わらないようにする */
+@media (max-width:860px){.orbit{inset:auto;left:50%;top:46%;width:94%;aspect-ratio:1;translate:-50% -50%}}
+/* 回転すると要素の外枠（四角）が対角線ぶん広がるため、スマホ幅では回転させない */
+@media (max-width:860px){.orbit{animation:none}}
