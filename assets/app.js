@@ -337,11 +337,17 @@
     sec.classList.add('in');
     sec.querySelectorAll('.rv').forEach((el, i) => setTimeout(() => el.classList.add('on'), reduced ? 0 : Math.min(i, 12) * 70));
   };
-  const revealIO = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
-    secs.slice(0, secs.indexOf(e.target) + 1).forEach(reveal);
-  }), { threshold: 0, rootMargin: '0px 0px -12% 0px' });
-  secs.forEach(s => revealIO.observe(s));
+  if (window.miruMotion) {
+    // 出現演出は assets/motion.js（GSAP ScrollTrigger）に一本化
+    window.miruMotion(secs, reveal);
+  } else {
+    // GSAP が読めなかったときの予備（本文が隠れたままにならないように）
+    const revealIO = new IntersectionObserver(es => es.forEach(e => {
+      if (!e.isIntersecting && e.boundingClientRect.top > 0) return;
+      secs.slice(0, secs.indexOf(e.target) + 1).forEach(reveal);
+    }), { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+    secs.forEach(s => revealIO.observe(s));
+  }
   new MutationObserver(() => $$('.obs.in .rv:not(.on)').forEach(el => el.classList.add('on'))).observe($('main'), { childList: true, subtree: true });
 
   if (reduced) return;

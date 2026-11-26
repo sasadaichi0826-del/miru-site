@@ -614,3 +614,10 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
 .il-bg,.il-text{will-change:auto}
 .sky .layer{will-change:auto}
 @media (max-width:768px){.interlude{height:62vh}}
+
+/* ===== P2-3 動きの層 ===== */
+.particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.hero > :not(.particles),.night-sec > :not(.particles){position:relative;z-index:1}
+.hero > .falling-star{position:absolute}
+/* 星座ラインは GSAP がスクロールに合わせて描く（CSS の遷移と二重にしない） */
+.js .const path{transition:none}
