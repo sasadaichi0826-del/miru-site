@@ -414,3 +414,27 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
   .film figure{width:140px;height:96px}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js [data-reveal] .rv{opacity:1;transform:none;filter:none}.visitor{display:none}}
+
+/* ---- 作品一覧ページ（gallery.html / music.html：Codex版を継承） ---- */
+.catalog-more{text-align:center;margin:28px 0 0}
+.catalog-page main{padding-top:24px;padding-bottom:40px}
+.catalog-page h1{font-family:var(--head);font-weight:900;color:var(--plum);font-size:clamp(2rem,5vw,3rem);margin:.2em 0 .4em;letter-spacing:.06em}
+.catalog-page .kicker{margin:0;font-family:var(--head);letter-spacing:.32em;font-size:.68rem;font-weight:700;color:var(--muted)}
+.catalog-page .back-link{display:inline-block;margin-bottom:20px;font-weight:700}
+.catalog-page #catalog-status{color:var(--rose);font-family:var(--head);font-weight:900;margin:16px 0}
+.catalog-page .nav [aria-current=page]{background:var(--lav-soft)}
+.catalog-page .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.catalog-page .filters button{font-family:var(--head);font-weight:700;font-size:.8rem;border:2px solid var(--lav);background:var(--card);color:var(--plum);border-radius:99px;padding:3px 12px;cursor:pointer}
+.catalog-page .filters button[aria-pressed=true]{background:var(--plum-deep);border-color:var(--plum-deep);color:#fff}
+.catalog-page .gallery figure:focus-visible{outline:3px solid var(--rose);outline-offset:4px}
+.catalog-page .tracks{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.catalog-page .track{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:12px;text-decoration:none;color:#3a2c55;background:#fff;border:2px solid var(--line);padding:10px 14px}
+.catalog-page .track .no{grid-row:span 2;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--head);font-weight:900;font-size:.8rem;color:#fff}
+.catalog-page .tone-0 .no{background:#b9a7e6}.catalog-page .tone-1 .no{background:#f0a6c3}.catalog-page .tone-2 .no{background:#8fc5e8}.catalog-page .tone-3 .no{background:#f3c27a}
+.catalog-page .track small{grid-column:2;color:#7a6b94}
+.catalog-page .track .play{grid-row:1/3;grid-column:3;color:var(--lav)}
+.catalog-page footer{text-align:center;padding:40px 16px;color:var(--muted);font-size:.85rem}
+.catalog-page dialog > img{max-height:76vh;width:100%;object-fit:contain;background:#f9f6ff}
+.catalog-page dialog > p{margin:0;padding:10px 18px 14px;font-family:var(--head);font-weight:900;color:#4b2f7a}
+.skip-link{position:absolute;left:16px;top:-80px;z-index:100;background:#fff;padding:8px 16px}
+.skip-link:focus{top:8px}
