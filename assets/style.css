@@ -661,3 +661,21 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
 @media (max-width:860px){.orbit{inset:auto;left:50%;top:46%;width:94%;aspect-ratio:1;translate:-50% -50%}}
 /* 回転すると要素の外枠（四角）が対角線ぶん広がるため、スマホ幅では回転させない */
 @media (max-width:860px){.orbit{animation:none}}
+
+/* B-1：スマホ幅のファーストビューで「名前」と「一行紹介」をスクロールなしで見せる（PC は変更なし）
+   並び：名前 → 一行紹介 → カルーセル → キャッチ → ボタン類。紹介文の参照元は profile.lead（intro.body 確定まで） */
+@media (max-width:860px){
+  .hero{display:flex;flex-direction:column;align-items:stretch;gap:0;padding-top:10px;text-align:center}
+  .hero-copy{display:contents}
+  .hero .label{display:none}
+  .hero .logotype{order:1;margin:0 auto;font-size:clamp(2.5rem,12vw,3.2rem);min-height:0;position:relative;z-index:2}
+  .hero .lead{order:2;margin:.25em auto .4em;min-height:0;font-size:.9rem;line-height:1.6;max-width:22em;position:relative;z-index:2}
+  .hero-art{order:3;min-height:440px}
+  .hero .tagline{order:4;min-height:0}
+  .hero-cta{order:5}
+  .quick{order:6}
+  /* 名前と紹介文の背面にスクリム（壁紙の上でも読めるように） */
+  .has-wall .hero::before{content:"";position:absolute;z-index:0;left:-8px;right:-8px;top:0;height:118px;border-radius:0 0 28px 28px;background:color-mix(in srgb,var(--paper) 93%,transparent);box-shadow:0 10px 30px 10px color-mix(in srgb,var(--paper) 70%,transparent)}
+  .hero .tagline,.hero-cta,.quick{position:relative;z-index:2}
+  .has-wall .hero .tagline{margin-top:10px}
+}
