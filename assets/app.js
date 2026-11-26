@@ -159,9 +159,9 @@
   }).join('');
   const today = new Date().toISOString().slice(0, 10);
   const sched = data.schedule.filter(s => s.date >= today).sort((a, b) => (a.date + a.time).localeCompare(b.date + b.time));
-  $('#schedule-list').innerHTML = sched.length
-    ? sched.map(s => `<li class="rv"><time datetime="${esc(s.date)}">${fmtDate(s.date).slice(5)}<small>${esc(s.time)}</small></time><div>${s.url ? `<a href="${esc(s.url)}"${ext(s.url)}>${esc(s.title)}</a>` : esc(s.title)}</div><p>${esc(s.platform)}</p></li>`).join('')
-    : '<li class="empty rv">いまは予定がありません。X でおしらせします。</li>';
+  // 予定が0件のときは見出しごと出さない（ダミー文は表示しない）
+  $('#schedule').hidden = $('#schedule-list').hidden = !sched.length;
+  $('#schedule-list').innerHTML = sched.map(s => `<li class="rv"><time datetime="${esc(s.date)}">${fmtDate(s.date).slice(5)}<small>${esc(s.time)}</small></time><div>${s.url ? `<a href="${esc(s.url)}"${ext(s.url)}>${esc(s.title)}</a>` : esc(s.title)}</div><p>${esc(s.platform)}</p></li>`).join('');
 
   // ---- 動画 ----
   $('#video-list').innerHTML = data.videos.map(v => {
