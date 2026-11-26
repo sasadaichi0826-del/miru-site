@@ -3155,6 +3155,11 @@
           "value": null
         },
         {
+          "key": "firstPerson",
+          "label": "一人称",
+          "value": null
+        },
+        {
           "key": "catchphrase",
           "label": "口ぐせ",
           "value": "「なんで？」「観察です」"
@@ -3163,6 +3168,11 @@
           "key": "partner",
           "label": "相棒",
           "value": "ぺーたん"
+        },
+        {
+          "key": "relation",
+          "label": "ふたりの関係",
+          "value": "つきみの後輩"
         },
         {
           "key": "credit",
@@ -3192,8 +3202,8 @@
         "headingFont": "mincho"
       },
       "tagline": [],
-      "lead": null,
-      "about": null,
+      "lead": "地球観察の先輩、つきみです。",
+      "about": "地球観察の先任で、みるの先輩。風呂・コーヒー牛乳・パン・昼寝・辛いものがすきです。",
       "portrait": {
         "src": "assets/img/characters/tsukimi-intro-full.webp",
         "alt": "クリーム色のボブに三日月の髪飾り、無地の羽織と淡黄色のロングドレス姿で、静かにほほえむつきみ。"
@@ -3256,14 +3266,24 @@
           "value": null
         },
         {
-          "key": "catchphrase",
+          "key": "firstPerson",
           "label": "一人称",
           "value": "私"
         },
         {
+          "key": "catchphrase",
+          "label": "口ぐせ",
+          "value": null
+        },
+        {
+          "key": "partner",
+          "label": "相棒",
+          "value": null
+        },
+        {
           "key": "relation",
-          "label": "みるとの関係",
-          "value": "先輩（地球観察の先任）"
+          "label": "ふたりの関係",
+          "value": "みるの先輩（地球観察の先任）"
         },
         {
           "key": "credit",
