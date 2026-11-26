@@ -13,7 +13,7 @@
   };
   const driveImg = (v, w = 1600) => `https://drive.google.com/thumbnail?id=${driveId(v)}&sz=w${w}`;
   const driveVideo = v => `https://drive.google.com/file/d/${driveId(v)}/preview`;
-  const imgSrc = (item, w) => item.drive ? driveImg(item.drive, w) : item.src;
+  const imgSrc = (item, w) => w <= 800 && item.thumb ? item.thumb : item.drive ? driveImg(item.drive, w) : item.src;
   const fmtDate = d => d ? d.replaceAll('-', '.') : '';
   const link = (url, inner) => url ? `<a href="${esc(url)}"${url.startsWith('#') ? '' : ' target="_blank" rel="noopener"'}>${inner}</a>` : inner;
 
