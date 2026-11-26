@@ -2685,5 +2685,158 @@
       "url": "https://note.com/glossy_serval594/n/nd2c57880df0a",
       "credit": "文・投稿：AIアシスタント みる／企画・制作：sasabo"
     }
-  ]
+  ],
+  "wallpaper": {
+    "_howto": "背景の全面壁紙。sets はセクションごとの画像の組。sections で各セクションがどの組を使うかを決める。画像は長辺1600px以上・文字なしの横長を推奨。",
+    "interval": 13,
+    "fade": 2.5,
+    "sets": {
+      "night": [
+        {
+          "src": "assets/wall/op-04.webp",
+          "tiny": "assets/wall/op-04-tiny.webp",
+          "title": "空を見上げるみる"
+        },
+        {
+          "src": "assets/wall/op-02.webp",
+          "tiny": "assets/wall/op-02-tiny.webp",
+          "title": "コックピットから見た地球"
+        },
+        {
+          "src": "assets/wall/op-27.webp",
+          "tiny": "assets/wall/op-27-tiny.webp",
+          "title": "瞳に映る地球"
+        },
+        {
+          "src": "assets/wall/op-07.webp",
+          "tiny": "assets/wall/op-07-tiny.webp",
+          "title": "第七码頭へ"
+        },
+        {
+          "src": "assets/wall/op-01.webp",
+          "tiny": "assets/wall/op-01-tiny.webp",
+          "title": "地球の縁"
+        }
+      ],
+      "music": [
+        {
+          "src": "assets/wall/op-14.webp",
+          "tiny": "assets/wall/op-14-tiny.webp",
+          "title": "サイダーの時間"
+        },
+        {
+          "src": "assets/wall/op-08.webp",
+          "tiny": "assets/wall/op-08-tiny.webp",
+          "title": "暗い格納庫のMUGI"
+        },
+        {
+          "src": "assets/wall/miru-cont-20261124-musicbox-001.webp",
+          "tiny": "assets/wall/miru-cont-20261124-musicbox-001-tiny.webp",
+          "title": "穴のあいた紙のうた"
+        },
+        {
+          "src": "assets/wall/op-20.webp",
+          "tiny": "assets/wall/op-20-tiny.webp",
+          "title": "MUGI起動"
+        },
+        {
+          "src": "assets/wall/op-21.webp",
+          "tiny": "assets/wall/op-21-tiny.webp",
+          "title": "格納庫を出て"
+        }
+      ],
+      "day": [
+        {
+          "src": "assets/wall/miru-cont-20261116-dew-001.webp",
+          "tiny": "assets/wall/miru-cont-20261116-dew-001-tiny.webp",
+          "title": "葉っぱの上の丸い空"
+        },
+        {
+          "src": "assets/wall/op-13.webp",
+          "tiny": "assets/wall/op-13-tiny.webp",
+          "title": "歩道橋を駆ける"
+        },
+        {
+          "src": "assets/wall/miru-cont-20261122-tidemark-001.webp",
+          "tiny": "assets/wall/miru-cont-20261122-tidemark-001-tiny.webp",
+          "title": "水は、どこまで来た？"
+        },
+        {
+          "src": "assets/wall/op-12.webp",
+          "tiny": "assets/wall/op-12-tiny.webp",
+          "title": "みるとナナ"
+        },
+        {
+          "src": "assets/wall/miru-cont-20261123-soap-001.webp",
+          "tiny": "assets/wall/miru-cont-20261123-soap-001-tiny.webp",
+          "title": "色のあいだに、もう一色"
+        },
+        {
+          "src": "assets/wall/op-15.webp",
+          "tiny": "assets/wall/op-15-tiny.webp",
+          "title": "港の階段で"
+        },
+        {
+          "src": "assets/wall/op-09.webp",
+          "tiny": "assets/wall/op-09-tiny.webp",
+          "title": "ナナと配送自転車"
+        }
+      ],
+      "end": [
+        {
+          "src": "assets/wall/op-01.webp",
+          "tiny": "assets/wall/op-01-tiny.webp",
+          "title": "地球の縁"
+        },
+        {
+          "src": "assets/wall/op-27.webp",
+          "tiny": "assets/wall/op-27-tiny.webp",
+          "title": "瞳に映る地球"
+        }
+      ]
+    },
+    "sections": {
+      "top": "night",
+      "profile": "night",
+      "news": "night",
+      "videos": "night",
+      "music": "music",
+      "story": "day",
+      "gallery": "day",
+      "links": "day",
+      "guideline": "end"
+    },
+    "interludes": [
+      {
+        "after": "profile",
+        "image": {
+          "src": "assets/wall/op-02.webp",
+          "tiny": "assets/wall/op-02-tiny.webp",
+          "title": "コックピットから見た地球"
+        },
+        "line": "ちきゅうって、ふしぎ。",
+        "sub": "— 地球観察ノート"
+      },
+      {
+        "after": "videos",
+        "image": {
+          "src": "assets/wall/op-14.webp",
+          "tiny": "assets/wall/op-14-tiny.webp",
+          "title": "サイダーの時間"
+        },
+        "line": "これは地球の電波ですか？",
+        "sub": "— 音楽室へ"
+      },
+      {
+        "after": "story",
+        "image": {
+          "src": "assets/wall/op-28.webp",
+          "tiny": "assets/wall/op-28-tiny.webp",
+          "title": "この星で出会った仲間"
+        },
+        "line": "まだよくわかんない。<br>でも、好きです。",
+        "sub": "— この星で出会った仲間"
+      }
+    ]
+  }
 }

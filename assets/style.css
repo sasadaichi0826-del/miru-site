@@ -439,3 +439,57 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
 .skip-link{position:absolute;left:16px;top:-80px;z-index:100;background:#fff;padding:8px 16px}
 .skip-link:focus{top:8px}
 .catalog-page .track .jk{grid-row:span 2;width:54px;height:54px;border-radius:8px;object-fit:cover;box-shadow:0 3px 8px #2e1b4f33}
+
+/* ===== V2：全面壁紙ステージ・可読性スクリム・合間帯 ===== */
+.has-wall{background:transparent}
+.wall{position:fixed;inset:0;z-index:-3;background:#1d1236;overflow:hidden;pointer-events:none}
+.wall-slot{position:absolute;inset:0;opacity:0;transition:opacity var(--wall-fade,2.5s) ease;background:center/cover no-repeat;filter:saturate(1.05)}
+.wall-slot::before{content:"";position:absolute;inset:0;background:inherit;filter:blur(18px);transform:scale(1.1)}
+.wall-slot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .8s}
+.wall-slot img.ready{opacity:1}
+.wall-slot.on{opacity:1}
+.wall-slot.kb img{animation:kenburns 20s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
+/* 全体にうっすら紙色（夜はプラム）をかけ、主役の文章と競合させない */
+.wall-veil{position:absolute;inset:0;background:color-mix(in srgb,var(--paper) 30%,transparent);transition:background .6s}
+.wall[data-set=music] .wall-veil{background:#1d123655}
+.has-wall .sky{z-index:-2}
+.has-wall .stars{opacity:.25}
+[data-time=night] .has-wall .stars,.has-wall[data-x] .stars{opacity:.6}
+
+/* 文字の載る領域は必ずスクリムの上に置く */
+.has-wall .obs:not(.night-sec){isolation:isolate}
+.has-wall .obs:not(.night-sec)::after{content:"";position:absolute;z-index:-1;inset:24px -40px;background:color-mix(in srgb,var(--paper) 93%,transparent);border-radius:40px;box-shadow:0 0 60px 30px color-mix(in srgb,var(--paper) 80%,transparent);backdrop-filter:blur(6px)}
+.has-wall .hero-copy{position:relative;isolation:isolate}
+.has-wall .hero-copy::before{content:"";position:absolute;z-index:-1;inset:-36px -40px;background:color-mix(in srgb,var(--paper) 90%,transparent);border-radius:40px;box-shadow:0 0 70px 40px color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(6px)}
+.has-wall .night-sec{background:radial-gradient(circle at 80% 10%,#6b4ba855,transparent 50%),radial-gradient(circle at 10% 90%,#c77ba044,transparent 50%),linear-gradient(160deg,#2e1b4fb0,#1d1236c4);backdrop-filter:blur(3px)}
+.has-wall .sleep{background:linear-gradient(transparent,#1d1236e6 38%)}
+.has-wall .nav{background:color-mix(in srgb,var(--paper) 88%,transparent)}
+
+/* 合間帯：文字は一言だけ、大きく */
+.interlude{position:relative;height:clamp(420px,86vh,900px);margin:0 calc(50% - 50vw);overflow:hidden;display:grid;place-items:center;isolation:isolate}
+.il-bg{position:absolute;inset:-12% 0;z-index:-2;background:center/cover no-repeat;will-change:transform;transform:scale(1.15)}
+.il-bg img{width:100%;height:100%;object-fit:cover}
+.interlude::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(var(--paper),transparent 18%,transparent 82%,var(--paper))}
+.il-text{text-align:center;padding:26px 40px;border-radius:999px;background:radial-gradient(closest-side,#1d1236b3,#1d123600);will-change:transform}
+.il-line{margin:0;font-family:var(--head);font-weight:900;font-size:clamp(1.8rem,5.2vw,4rem);line-height:1.35;letter-spacing:.08em;color:#fff;text-shadow:0 2px 0 #2e1b4f,0 0 30px #2e1b4fcc}
+.il-sub{margin:.6em 0 0;font-family:var(--head);font-size:.8rem;letter-spacing:.3em;color:#ffd9e6;text-shadow:0 1px 6px #000a}
+.interlude .il-line{opacity:0;transform:translateY(20px);transition:opacity 1s,transform 1s}
+.interlude.seen .il-line{opacity:1;transform:none}
+@media (max-width:860px){
+  .has-wall .obs:not(.night-sec)::after{inset:16px -12px;border-radius:26px}
+  .has-wall .hero-copy::before{inset:-16px -12px}
+  .interlude{height:70vh}
+  .il-text{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){.interlude .il-line{opacity:1;transform:none}}
+/* 音楽室：板は薄く、文字のあるカードだけ濃いすりガラスに（壁紙を一番派手に見せる） */
+.has-wall .night-sec{background:linear-gradient(180deg,#1d123633,#1d123555 40%,#1d123666);backdrop-filter:none}
+.has-wall .night-sec .obs-head,.has-wall .night-sec .sec-lead,.has-wall .night-sec .more{text-shadow:0 2px 10px #1d1236,0 0 2px #1d1236}
+.has-wall .night-sec .sec-lead,.has-wall .night-sec .more{display:inline-block;background:#1d1236b0;padding:4px 12px;border-radius:12px}
+.has-wall .turntable{background:#1d1236c8;backdrop-filter:blur(12px)}
+.has-wall .night-sec .track{background:#1d1236cc;backdrop-filter:blur(8px);border-color:#ffffff30}
+.has-wall .night-sec .track:hover{background:#2e1b4fe6}
+.has-wall .night-sec .track[aria-selected=true]{background:#5a2f5ee6}
+/* 壁紙がある間は雲の層を消し、星だけを薄く重ねる */
+.has-wall .clouds{display:none}
