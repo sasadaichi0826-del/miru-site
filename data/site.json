@@ -1,0 +1,54 @@
+{
+  "_howto": "このファイルだけ編集すればサイトが更新されます。画像・動画は Google ドライブの共有リンク(またはファイルID)を drive に入れてください。詳しくは README.md。",
+
+  "profile": {
+    "name": "星麦みる",
+    "nameEn": "HOSHIMUGI MIRU",
+    "tagline": ["ちきゅうのこと、", "まだよくわかんない。", "だから、みる。"],
+    "lead": "地球観察ちゅうの宇宙人。パンと甘いものがだいすき。",
+    "heroImage": { "src": "assets/img/miru-front.webp", "alt": "ラベンダーのツインテール、濃紫のベレー帽とリボン、パンの袖飾りとペンギンバッグを身につけた星麦みる" },
+    "about": "星麦みるは、地球を観察するためにやってきた宇宙人。日本語も地球の常識もまだ勉強中。相棒のぺーたんと、食べたり遊んだりしながら調査中です。",
+    "facts": [
+      { "label": "立場", "value": "地球観察ちゅうの宇宙人" },
+      { "label": "相棒", "value": "ぺーたん" },
+      { "label": "すきなもの", "value": "パン・甘いもの・牛乳・ゲーム・サウナ" },
+      { "label": "口ぐせ", "value": "「なんで？」「観察です」" }
+    ]
+  },
+
+  "news": [
+    { "date": "2026-11-26", "tag": "お知らせ", "title": "公式サイトをおひっこししました", "body": "これからはここで、みるの観察記録をおとどけします。", "url": "" },
+    { "date": "2026-10-01", "tag": "MUSIC", "title": "MV「Blue hour」公開ちゅう", "body": "夜と朝のあいだ、まだ行き先を決めなくていい時間。", "url": "#videos" }
+  ],
+
+  "schedule": [
+    { "date": "2026-12-01", "time": "21:00", "title": "地球観察レポート #1（例）", "platform": "YouTube", "url": "" }
+  ],
+
+  "videos": [
+    { "title": "Blue hour（MV）", "note": "1:40", "drive": "", "youtube": "", "poster": "assets/img/blue-hour-preview.webp" }
+  ],
+
+  "gallery": [
+    { "title": "またあしたって、", "category": "みるの日常", "src": "assets/img/miru-hero-thumb.webp", "drive": "" },
+    { "title": "こんばんは、地球。", "category": "みるの日常", "src": "assets/img/miru-observation-thumb.webp", "drive": "" },
+    { "title": "銀河コンビニエンス", "category": "みるの日常", "src": "assets/img/miru-convenience-thumb.webp", "drive": "" },
+    { "title": "小さな宇宙人、大きな音。", "category": "みるの日常", "src": "assets/img/miru-jacket-thumb.webp", "drive": "" },
+    { "title": "にめいさま", "category": "みるの日常", "src": "assets/img/nimeisama-thumb.webp", "drive": "" },
+    { "title": "ぺーたんと、電波受信ちゅう。", "category": "みるの日常", "src": "assets/img/miru-space-observer-thumb.webp", "drive": "" },
+    { "title": "星麦みる ポートレート", "category": "みるの日常", "src": "assets/img/miru-portrait-thumb.webp", "drive": "" }
+  ],
+
+  "links": [
+    { "label": "X", "sub": "@PWGFSG", "url": "https://x.com/PWGFSG" },
+    { "label": "note", "sub": "物語『フラクトアース』", "url": "https://note.com/glossy_serval594/m/me31933916ef8" },
+    { "label": "Suno", "sub": "みるの楽曲", "url": "https://suno.com/@sasadai" }
+  ],
+
+  "guideline": {
+    "intro": "ファンアート・切り抜きなど、みるを好きでいてくれる創作は大かんげいです。",
+    "ok": ["ファンアートの投稿（ハッシュタグをつけてくれるとうれしい）", "配信の切り抜き（出典リンクを記載）", "個人で楽しむためのアイコン・壁紙利用"],
+    "ng": ["公式と誤解される表現", "商用利用（事前にご相談ください）", "誰かを傷つける内容・公序良俗に反する内容"],
+    "contact": ""
+  }
+}

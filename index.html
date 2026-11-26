@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>星麦みる 公式サイト</title>
+<meta name="description" content="地球観察ちゅうの宇宙人、星麦みるの公式サイト。">
+<meta property="og:title" content="星麦みる 公式サイト">
+<meta property="og:description" content="ちきゅうのこと、まだよくわかんない。だから、みる。">
+<meta property="og:image" content="assets/img/miru-front.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="nav">
+  <a class="logo" href="#top">星麦<span>みる</span></a>
+  <nav>
+    <a href="#profile">プロフィール</a><a href="#news">お知らせ</a><a href="#schedule">スケジュール</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="kicker" data-bind="profile.nameEn"></p>
+      <h1 id="hero-name"></h1>
+      <p class="tagline" id="tagline"></p>
+      <p class="lead" data-bind="profile.lead"></p>
+      <a class="btn" href="#profile">みるのこと、しる</a>
+    </div>
+    <div class="hero-art">
+      <div class="orbit" aria-hidden="true"></div>
+      <img class="deco star" src="assets/img/star-accent.webp" alt="" aria-hidden="true">
+      <img class="deco bread" src="assets/img/bread-accent.webp" alt="" aria-hidden="true">
+      <img class="miru" id="hero-img" alt="">
+      <span class="bubble">地球観察ちゅう。</span>
+    </div>
+  </section>
+
+  <section id="profile" class="card-sec">
+    <p class="kicker">HELLO, EARTH.</p>
+    <h2>プロフィール</h2>
+    <p data-bind="profile.about"></p>
+    <dl class="facts" id="facts"></dl>
+  </section>
+
+  <section id="news">
+    <p class="kicker">NEWS</p><h2>お知らせ</h2>
+    <ul class="news" id="news-list"></ul>
+  </section>
+
+  <section id="schedule">
+    <p class="kicker">SCHEDULE</p><h2>配信スケジュール</h2>
+    <ul class="schedule" id="schedule-list"></ul>
+  </section>
+
+  <section id="videos">
+    <p class="kicker">MOVIE</p><h2>動画</h2>
+    <div class="videos" id="video-list"></div>
+  </section>
+
+  <section id="gallery">
+    <p class="kicker">GALLERY</p><h2>ギャラリー</h2>
+    <div class="filters" id="filters"></div>
+    <div class="gallery" id="gallery-list"></div>
+  </section>
+
+  <section id="links">
+    <p class="kicker">LINKS</p><h2>リンク</h2>
+    <div class="links" id="link-list"></div>
+  </section>
+
+  <section id="guideline" class="card-sec">
+    <p class="kicker">GUIDELINE</p><h2>ファン活動ガイドライン</h2>
+    <p data-bind="guideline.intro"></p>
+    <div class="guide">
+      <div><h3>OK だよ</h3><ul id="guide-ok"></ul></div>
+      <div><h3>ごめんね</h3><ul id="guide-ng"></ul></div>
+    </div>
+    <p class="contact" id="contact"></p>
+  </section>
+</main>
+
+<footer>© 星麦みる</footer>
+
+<dialog id="lightbox"><button class="close" aria-label="閉じる">×</button><img alt=""><p></p></dialog>
+<script src="assets/app.js"></script>
+</body>
+</html>
