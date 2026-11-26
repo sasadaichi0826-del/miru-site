@@ -262,6 +262,33 @@
       else fTarget.querySelector('.faq-list').innerHTML = items.map(f => `<details><summary>${esc(f.q)}${badge(f)}</summary><p>${esc(f.a)}</p></details>`).join('');
     }
 
+    // ================= P2-1 フォント =================
+    // しゅわ丸：アクセント見出しのうち、全文字が収録されているものだけに当てる（書体の混在を出さない）
+    const SHUWA = new Set(window.SHUWA_CHARS || '');
+    const covered = t => { const s = t.replace(/\s/g, ''); return s.length > 0 && [...s].every(c => SHUWA.has(c)); };
+    const applyShuwa = () => {
+      if (!SHUWA.size) return;
+      document.querySelectorAll('.logotype, main h2, .char-title, .char-tabs .char-name, .il-line, .intro-title, .rel-copy').forEach(el => {
+        if (el.dataset.shuwa) return;
+        const text = [...el.childNodes].filter(n => n.nodeType === 3 || !n.matches?.('small, .draft-badge')).map(n => n.textContent).join('');
+        el.dataset.shuwa = covered(text) ? 'on' : 'off';
+        if (el.dataset.shuwa === 'on') el.classList.add('font-shuwa');
+      });
+    };
+    applyShuwa();
+    setTimeout(applyShuwa, 1500); // 合間帯（wall.js）が後から入るため
+    addEventListener('load', applyShuwa, { once: true });
+
+    // つきみ側の明朝：名前・見出しに使う文字だけを Google Fonts から読み込む
+    const tsu = chars.find(c => c.theme?.headingFont === 'mincho');
+    if (tsu) {
+      const text = new Set([...`${tsu.name}${tsu.nameEn}キャラクター${(data.relationship?.qa || []).map(x => x.q).join('')}`]);
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = `https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;700&display=swap&text=${encodeURIComponent([...text].join(''))}`;
+      document.head.appendChild(link);
+    }
+
     // 空で外れたセクションがあっても、見出しの星座番号は連番にする
     document.querySelectorAll('main .obs[data-no]').forEach((s, i) => { s.dataset.no = String(i + 1).padStart(2, '0'); });
   };
