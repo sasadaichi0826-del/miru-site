@@ -218,7 +218,7 @@
   const cats = ['すべて', ...new Set(G.map(g => g.category))];
   const coverOf = c => (c === 'すべて' ? slides[0] : G.find(g => g.category === c && g.thumb)) || G.find(g => g.category === c);
   let stageSeen = false;
-  let activeView = 'stage', filtered = [...G], stageIdx = 0, stageAuto = !reduced, stageTimer = null, gridLimit = 24;
+  let activeView = 'stage', filtered = [...G], stageIdx = 0, stageAuto = false, stageTimer = null, gridLimit = 24;
   const stageImg = $('#stage-img'), thumbStrip = $('#thumb-strip'), stageAutoBtn = $('#stage-auto');
   const firstLine = s => String(s || '').split('\n').find(x => x.trim()) || '';
   const renderStage = (idx, animate = true) => {
