@@ -1102,73 +1102,85 @@
       "title": "01 秋ニット",
       "category": "衣装帖",
       "src": "assets/img/outfits/01-autumn-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-01-autumn"
     },
     {
       "title": "02 テックストリート",
       "category": "衣装帖",
       "src": "assets/img/outfits/02-tech-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-02-tech"
     },
     {
       "title": "03 マリン",
       "category": "衣装帖",
       "src": "assets/img/outfits/03-marine-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-03-marine"
     },
     {
       "title": "04 カフェ",
       "category": "衣装帖",
       "src": "assets/img/outfits/04-cafe-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-04-cafe"
     },
     {
       "title": "05 アウトドア",
       "category": "衣装帖",
       "src": "assets/img/outfits/05-outdoor-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-05-outdoor"
     },
     {
       "title": "06 スマートベスト",
       "category": "衣装帖",
       "src": "assets/img/outfits/06-vest-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-06-vest"
     },
     {
       "title": "07 ルームウェア",
       "category": "衣装帖",
       "src": "assets/img/outfits/07-room-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-07-room"
     },
     {
       "title": "08 館内着",
       "category": "衣装帖",
       "src": "assets/img/outfits/08-lounge-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-08-lounge"
     },
     {
       "title": "09 冬ダッフル",
       "category": "衣装帖",
       "src": "assets/img/outfits/09-winter-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-09-winter"
     },
     {
       "title": "10 星空ワンピース",
       "category": "衣装帖",
       "src": "assets/img/outfits/10-starry-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-10-starry"
     },
     {
       "title": "11 宇宙パイロット",
       "category": "衣装帖",
       "src": "assets/img/outfits/11-pilot-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-11-pilot"
     },
     {
       "title": "12 ポップステージ",
       "category": "衣装帖",
       "src": "assets/img/outfits/12-stage-small.webp",
-      "drive": ""
+      "drive": "",
+      "id": "outfit-12-stage"
     },
     {
       "title": "葉っぱの上の丸い空",
@@ -2838,5 +2850,200 @@
         "sub": "— この星で出会った仲間"
       }
     ]
-  }
+  },
+  "characters": [
+    {
+      "id": "miru",
+      "fileNo": "HM-001",
+      "name": "星麦みる",
+      "nameEn": "HOSHIMUGI MIRU",
+      "role": "地球観察員",
+      "theme": {
+        "accent": "#c77ba0",
+        "accentSoft": "#fdeef3",
+        "ink": "#4a2438",
+        "headingFont": "rounded"
+      },
+      "tagline": [
+        "ちきゅうって、",
+        "ふしぎ。"
+      ],
+      "lead": "はじめまして、星麦みるです。地球の「なんで？」を、あつめています。",
+      "about": "地球観察ちゅうの宇宙人。日本語も、地球の常識も勉強中。パンや甘いもの、ゲーム、サウナがだいすきです。相棒のぺーたんと、食べたり遊んだりしながら調査中。",
+      "portrait": {
+        "src": "assets/img/miru-front.webp",
+        "alt": "ラベンダーのツインテール、濃紫のベレー帽とリボン、パンの袖飾りとペンギンバッグを身につけた星麦みる"
+      },
+      "data": [
+        {
+          "key": "birthday",
+          "label": "誕生日",
+          "value": null
+        },
+        {
+          "key": "debut",
+          "label": "デビュー日",
+          "value": null
+        },
+        {
+          "key": "height",
+          "label": "身長",
+          "value": "137cm"
+        },
+        {
+          "key": "age",
+          "label": "年齢",
+          "value": "約80歳",
+          "note": "宇宙年齢。地球の暦とは対応しない"
+        },
+        {
+          "key": "fanName",
+          "label": "ファンネーム",
+          "value": null
+        },
+        {
+          "key": "fanMark",
+          "label": "ファンマーク",
+          "value": null
+        },
+        {
+          "key": "tagGeneral",
+          "label": "総合タグ",
+          "value": null
+        },
+        {
+          "key": "tagStream",
+          "label": "配信タグ",
+          "value": null
+        },
+        {
+          "key": "tagArt",
+          "label": "ファンアートタグ",
+          "value": null
+        },
+        {
+          "key": "likes",
+          "label": "すきなもの",
+          "value": "パン・甘いもの・牛乳・ゲーム・サウナ"
+        },
+        {
+          "key": "dislikes",
+          "label": "にがてなもの",
+          "value": null
+        },
+        {
+          "key": "catchphrase",
+          "label": "口ぐせ",
+          "value": "「なんで？」「観察です」"
+        },
+        {
+          "key": "partner",
+          "label": "相棒",
+          "value": "ぺーたん"
+        },
+        {
+          "key": "credit",
+          "label": "クレジット",
+          "value": null
+        }
+      ],
+      "voices": [],
+      "costumeIds": []
+    },
+    {
+      "id": "tsukimi",
+      "fileNo": "HM-002",
+      "name": "つきみ",
+      "nameEn": "TSUKIMI",
+      "role": "地球観察の先輩",
+      "theme": {
+        "accent": "#c9a227",
+        "accentSoft": "#faf3d9",
+        "ink": "#3d3418",
+        "headingFont": "mincho"
+      },
+      "tagline": [],
+      "lead": null,
+      "about": null,
+      "portrait": {
+        "src": null,
+        "alt": ""
+      },
+      "data": [
+        {
+          "key": "birthday",
+          "label": "誕生日",
+          "value": null
+        },
+        {
+          "key": "debut",
+          "label": "デビュー日",
+          "value": null
+        },
+        {
+          "key": "height",
+          "label": "身長",
+          "value": "128cm"
+        },
+        {
+          "key": "age",
+          "label": "年齢",
+          "value": "約140歳",
+          "note": "宇宙年齢"
+        },
+        {
+          "key": "fanName",
+          "label": "ファンネーム",
+          "value": null
+        },
+        {
+          "key": "fanMark",
+          "label": "ファンマーク",
+          "value": null
+        },
+        {
+          "key": "tagGeneral",
+          "label": "総合タグ",
+          "value": null
+        },
+        {
+          "key": "tagStream",
+          "label": "配信タグ",
+          "value": null
+        },
+        {
+          "key": "tagArt",
+          "label": "ファンアートタグ",
+          "value": null
+        },
+        {
+          "key": "likes",
+          "label": "すきなもの",
+          "value": "風呂・コーヒー牛乳・パン・昼寝・辛いもの"
+        },
+        {
+          "key": "dislikes",
+          "label": "にがてなもの",
+          "value": null
+        },
+        {
+          "key": "catchphrase",
+          "label": "一人称",
+          "value": "私"
+        },
+        {
+          "key": "relation",
+          "label": "みるとの関係",
+          "value": "先輩（地球観察の先任）"
+        },
+        {
+          "key": "credit",
+          "label": "クレジット",
+          "value": null
+        }
+      ],
+      "voices": [],
+      "costumeIds": []
+    }
+  ]
 }

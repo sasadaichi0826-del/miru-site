@@ -18,7 +18,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&family=Zen+Maru+Gothic:wght@500;700&display=swap">
-<link rel="stylesheet" href="assets/style.css?v=wall-20261126c">
+<link rel="stylesheet" href="assets/style.css?v=char-20261126b">
 </head>
 <body>
 <a class="skip" href="#profile">本文へ移動</a>
@@ -31,7 +31,7 @@
 <header class="nav">
   <a class="logo" href="#top"><span class="logo-star">✦</span>星麦<span>みる</span></a>
   <nav aria-label="ページ内">
-    <a href="#profile">プロフィール</a><a href="#news">お知らせ</a><a href="#videos">動画</a><a href="#music">音楽室</a><a href="#story">物語</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
+    <a href="#profile">キャラクター</a><a href="#news">お知らせ</a><a href="#videos">動画</a><a href="#music">音楽室</a><a href="#story">物語</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
   </nav>
   <button class="time-toggle" id="time-toggle" type="button" aria-label="昼と夜を切り替える"><span class="sun">☀</span><span class="moon">☾</span></button>
 </header>
@@ -62,6 +62,7 @@
       <img class="deco star" src="assets/img/star-accent.webp" alt="" aria-hidden="true">
       <img class="deco bread" src="assets/img/bread-accent.webp" alt="" aria-hidden="true">
       <p class="bubble" id="hero-bubble">きょうも、地球観察ちゅう。</p>
+      <div class="countdown" id="countdown" hidden aria-label="記念日カウントダウン"></div>
       <div class="hero-controls" id="hero-controls" aria-label="キービジュアル切り替え">
         <button type="button" class="hc-btn" id="hero-prev" aria-label="前の画像">‹</button>
         <div class="hc-dots" id="hero-dots"></div>
@@ -72,22 +73,24 @@
     <a class="falling-star" href="#profile" aria-label="下へスクロール"><span></span></a>
   </section>
 
+  <!-- はじめましての方へ（data.intro） -->
+  <section class="intro" id="intro" aria-label="はじめましての方へ"></section>
+
   <!-- 流れるフィルム帯 -->
   <div class="film" aria-hidden="true"><div class="film-track" id="film-a"></div></div>
 
-  <!-- 01 プロフィール -->
-  <section id="profile" class="obs" data-no="01" data-vert="はじめまして、地球。" data-reveal="lines">
-    <header class="obs-head"><p class="label">HELLO, EARTH.</p><h2>プロフィール</h2></header>
-    <div class="profile-grid">
-      <div class="file">
-        <span class="tape t1" aria-hidden="true"></span>
-        <div class="file-head"><span>OBSERVER FILE</span><span>No. HM-001</span></div>
-        <p class="file-about" data-bind="profile.about"></p>
-        <dl class="facts" id="facts"></dl>
-      </div>
-      <div class="collage" id="profile-collage"></div>
-    </div>
+  <!-- 01 キャラクター（id は外部リンク互換のため #profile のまま） -->
+  <section id="profile" class="obs char-sec" data-no="01" data-character="miru" data-vert="はじめまして、地球。" data-reveal="lines">
+    <header class="obs-head"><p class="label">CHARACTER</p><h2 class="char-heading">キャラクター</h2></header>
+    <div class="char-tabs" id="char-tabs" role="tablist" aria-label="キャラクターを選ぶ"></div>
+    <div class="char-panels" id="char-panels"></div>
     <p class="sticky-note">地球の「なんで？」を、<br>あつめています。</p>
+  </section>
+
+  <!-- 関係性（data.relationship） -->
+  <section id="relation" class="obs" data-no="01" data-reveal="tape" aria-labelledby="relation-title">
+    <header class="obs-head"><p class="label">RELATION</p><h2 id="relation-title">関係</h2></header>
+    <div class="rel-body"></div>
   </section>
 
   <!-- 02 お知らせ -->
@@ -185,6 +188,12 @@
   </section>
 
   <!-- 07 リンク -->
+  <!-- FAQ（data.faq） -->
+  <section id="faq" class="obs" data-no="07" data-reveal="lines" aria-labelledby="faq-title">
+    <header class="obs-head"><p class="label">FAQ</p><h2 id="faq-title">よくある質問</h2></header>
+    <div class="faq-list"></div>
+  </section>
+
   <section id="links" class="obs" data-no="07" data-vert="みるに、会いにいく。" data-reveal="twinkle">
     <header class="obs-head"><p class="label">LINKS</p><h2>みるに会いにいく</h2></header>
     <p class="sec-lead">ぽちっと押すと、みるのいる場所へワープします。</p>
@@ -196,6 +205,7 @@
     <header class="obs-head"><p class="label">GUIDELINE</p><h2>ファン活動ガイドライン</h2></header>
     <div class="file">
       <p data-bind="guideline.intro"></p>
+      <p class="guide-tags" id="guide-tags" hidden></p>
       <div class="guide">
         <div><h3><span class="stamp ok">OK</span>だよ</h3><ul id="guide-ok"></ul></div>
         <div><h3><span class="stamp ng">NG</span>ごめんね</h3><ul id="guide-ng"></ul></div>
@@ -207,6 +217,7 @@
 
 <footer class="sleep">
   <div class="sleep-art"><img id="sleep-img" alt="本の上でお昼寝するみる" loading="lazy"><span class="z z1">z</span><span class="z z2">z</span><span class="z z3">Z</span></div>
+  <div class="today-obs" id="today-obs" hidden><p class="label">TODAY'S OBSERVATION</p><p class="to-text"></p><button type="button" class="to-more">もうひとつ</button></div>
   <p class="good-night">きょうの観察は、ここまで。<br>また、あした。</p>
   <p class="copy" id="footer"></p>
 </footer>
@@ -228,5 +239,6 @@
 </dialog>
 <script src="assets/app.js?v=wall-20261126c"></script>
 <script src="assets/wall.js?v=wall-20261126c"></script>
+<script src="assets/character.js?v=char-20261126b"></script>
 </body>
 </html>

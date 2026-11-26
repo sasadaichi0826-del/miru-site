@@ -129,10 +129,9 @@
     openLightbox(list, list.indexOf(G[+f.dataset.film]));
   });
 
-  // ---- プロフィール ----
-  $('#facts').innerHTML = p.facts.map(f => `<div class="rv"><dt>${esc(f.label)}</dt><dd>${esc(f.value)}</dd><span class="stamp${f.status === 'wip' ? ' wip' : ''}">${f.status === 'wip' ? '確認中' : '済'}</span></div>`).join('');
-  const coll = pickN(byCat('みるの日常').filter(g => g.thumb), 3, 0);
-  $('#profile-collage').innerHTML = coll.map((g, i) => `<figure class="pc pc${i} rv" data-g="${G.indexOf(g)}"><span class="tape" aria-hidden="true"></span>${img(g, 400)}<figcaption>${esc(g.title)}</figcaption></figure>`).join('');
+  // ---- キャラクター欄は assets/character.js が描画する（ライトボックスを共有） ----
+  window.miruSite = { openLightbox, imgSrc, data };
+  document.dispatchEvent(new CustomEvent('miru:ready'));
 
   // ---- お知らせ：手紙（最新に切手の写真） ----
   const news = [...data.news].sort((a, b) => b.date.localeCompare(a.date));
@@ -284,8 +283,6 @@
   // ギャラリーが画面外のときは自動切り替えを止める
   new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) restartStage(); else clearInterval(stageTimer); })).observe($('#gallery-stage'));
 
-  // プロフィールのコラージュ → ライトボックス
-  $('#profile-collage').addEventListener('click', e => { const f = e.target.closest('[data-g]'); if (f) openLightbox(coll, coll.indexOf(G[+f.dataset.g])); });
 
   // ---- リンク ----
   const sparkles = '<i class="sp s1">✦</i><i class="sp s2">✧</i><i class="sp s3">♡</i>';
