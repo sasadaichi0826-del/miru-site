@@ -631,3 +631,13 @@ dialog .close{position:absolute;top:10px;right:10px;z-index:2;border:0;backgroun
 .intro{min-height:128px}
 .intro:empty{display:block}
 @media (max-width:860px){.intro{min-height:360px}}
+
+/* ===== フォント予算（合計200KB以内）を優先：Google の日本語 Web フォントをやめる =====
+   本文：端末の丸ゴシック（Mac/iPhone＝ヒラギノ丸ゴ、Windows＝BIZ UDPゴシック等）
+   見出し：M PLUS Rounded 1c を見出しで使う文字だけに絞った自前ファイル（42KB）。収録外の字は端末の丸ゴシックで表示 */
+@font-face{font-family:"MiruHead";src:url("fonts/MiruHead-800.woff2") format("woff2");font-weight:700 900;font-display:swap}
+:root{
+  --head:"MiruHead","Hiragino Maru Gothic ProN","Hiragino Maru Gothic Pro","BIZ UDPGothic","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+  --body:"Hiragino Maru Gothic ProN","Hiragino Maru Gothic Pro","BIZ UDPGothic","Yu Gothic UI","Meiryo",system-ui,sans-serif;
+}
+.font-shuwa{font-family:"ShuwaMaru","MiruHead","Hiragino Maru Gothic ProN",sans-serif!important}
