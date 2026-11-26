@@ -23,7 +23,7 @@ section{padding:56px 0}
 h2{margin:.1em 0 .8em;font-size:clamp(1.5rem,4vw,2.1rem);color:var(--plum)}
 h2::after{content:"✦";color:var(--lav);margin-left:.4em;font-size:.7em}
 
-.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:24px;min-height:calc(100vh - 60px);padding:32px 0}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:24px;min-height:calc(100vh - 60px);padding:32px 0;overflow-x:clip}
 .hero h1{font-size:clamp(3rem,10vw,5.5rem);line-height:1.05;margin:.1em 0;color:var(--plum)}
 .hero h1 span{color:#c77ba0}
 .tagline{font-size:clamp(1.1rem,2.6vw,1.5rem);font-weight:700}
