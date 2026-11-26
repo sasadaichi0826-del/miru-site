@@ -153,3 +153,17 @@ footer{text-align:center;padding:40px 16px;color:var(--muted);font-size:.85rem}
   .news p,.schedule p{grid-column:1}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* トップの紹介と作品一覧ページ */
+.catalog-more{text-align:center;margin:28px 0 0}
+.gallery-preview{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;columns:auto}
+.gallery-preview figure{margin:0}
+.gallery-preview img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.catalog-page h1{color:var(--plum);font-size:clamp(2rem,5vw,3rem);margin:.2em 0 .6em}
+.catalog-page .back-link{display:inline-block;margin-bottom:24px;font-weight:700}
+.catalog-page #catalog-status{color:var(--muted);margin:20px 0}
+.catalog-page [aria-current=page]{background:var(--lav-soft)}
+.catalog-page .gallery figure:focus-visible{outline:3px solid var(--plum);outline-offset:4px}
+.skip-link{position:absolute;left:16px;top:-80px;z-index:100;background:white;padding:8px 16px}
+.skip-link:focus{top:8px}
+@media(max-width:760px){.gallery-preview{grid-template-columns:repeat(2,minmax(0,1fr))}}

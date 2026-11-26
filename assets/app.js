@@ -45,15 +45,11 @@
     return `<div class="video"><div class="frame" style="background-image:url('${esc(v.poster || '')}')">${frame}</div><p>${esc(v.title)}<small>${esc(v.note)}</small></p>${v.credit ? `<p class="credit">${esc(v.credit)}</p>` : ''}</div>`;
   }).join('');
 
-  const cats = ['すべて', ...new Set(data.gallery.map(g => g.category))];
-  const renderGallery = cat => {
-    $('#gallery-list').innerHTML = data.gallery.filter(g => cat === 'すべて' || g.category === cat).map(g =>
-      `<figure data-full="${esc(imgSrc(g, 2000))}" data-title="${esc(g.title)}"><img src="${esc(imgSrc(g, 800))}" alt="${esc(g.title)}" loading="lazy" referrerpolicy="no-referrer"><figcaption>${esc(g.title)}</figcaption></figure>`).join('');
-    document.querySelectorAll('#filters button').forEach(b => b.setAttribute('aria-pressed', b.textContent === cat));
-  };
-  $('#filters').innerHTML = cats.length > 2 ? cats.map(c => `<button type="button">${esc(c)}</button>`).join('') : '';
-  $('#filters').addEventListener('click', e => e.target.matches('button') && renderGallery(e.target.textContent));
-  renderGallery('すべて');
+  // トップでは見出し用の4作品だけを紹介する。
+  $('#gallery-list').innerHTML = data.gallery.slice(0, 4).map(g =>
+    `<figure data-full="${esc(imgSrc(g, 2000))}" data-title="${esc(g.title)}"><img src="${esc(imgSrc(g, 800))}" alt="${esc(g.title)}" loading="lazy"><figcaption>${esc(g.title)}</figcaption></figure>`).join('');
+  $('#gallery-all').textContent = `ギャラリーをすべて見る（${data.gallery.length}点）`;
+  $('#music-all').textContent = `楽曲をすべて見る（${(data.music || []).length}曲）`;
 
   const box = $('#lightbox');
   $('#gallery-list').addEventListener('click', e => {
@@ -66,7 +62,7 @@
   box.addEventListener('click', e => (e.target === box || e.target.matches('.close')) && box.close());
 
   // 音楽
-  $('#track-list').innerHTML = (data.music || []).map((m, i) =>
+  $('#track-list').innerHTML = (data.music || []).slice(0, 4).map((m, i) =>
     `<a class="track tone-${i % 4}" href="${esc(m.url)}" target="_blank" rel="noopener"><span class="no">${String(i + 1).padStart(2, '0')}</span><strong>${esc(m.title)}</strong><small>${esc(m.genre)}</small><span class="play" aria-hidden="true">▶</span></a>`).join('');
 
   // 物語

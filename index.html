@@ -10,7 +10,7 @@
 <meta property="og:image" content="assets/img/miru-front.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/style.css?v=catalog-pages-20261126">
 </head>
 <body>
 <header class="nav">
@@ -64,7 +64,7 @@
     <p class="kicker">MUSIC</p><h2>音楽室</h2>
     <p class="sec-lead">のんびり充電する日も、もうひと駅だけ寄り道する日も。曲名を選ぶと Suno で聴けます。</p>
     <div class="tracks" id="track-list"></div>
-    <a class="more" href="https://suno.com/@sasadai" target="_blank" rel="noopener">sasaboの公開曲をもっと聴く ↗</a>
+    <p class="catalog-more"><a class="btn" id="music-all" href="music.html">楽曲をすべて見る</a></p>
   </section>
 
   <section id="story" class="card-sec story">
@@ -86,8 +86,8 @@
 
   <section id="gallery">
     <p class="kicker">GALLERY</p><h2>ギャラリー</h2>
-    <div class="filters" id="filters"></div>
-    <div class="gallery" id="gallery-list"></div>
+    <div class="gallery gallery-preview" id="gallery-list"></div>
+    <p class="catalog-more"><a class="btn" id="gallery-all" href="gallery.html">ギャラリーをすべて見る</a></p>
   </section>
 
   <section id="links">
@@ -110,6 +110,6 @@
 <footer id="footer"></footer>
 
 <dialog id="lightbox"><button class="close" aria-label="閉じる">×</button><img alt=""><p></p></dialog>
-<script src="assets/app.js?v=gallery210-20261126"></script>
+<script src="assets/app.js?v=catalog-pages-20261126"></script>
 </body>
 </html>
