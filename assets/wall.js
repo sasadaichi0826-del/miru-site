@@ -22,13 +22,21 @@
     if (!after || !it.image) return;
     const line = String(it.line || '').split('<br>').map(esc).join('<br>');
     // 低速回線では大きな画像を読まず、ぼかし用の小画像だけを背景にする
-    const big = slow ? '' : `<img src="${esc(it.image.src)}" alt="" loading="lazy" decoding="async">`;
+    const big = slow ? '' : `<img data-src="${esc(it.image.src)}" alt="" decoding="async">`;
     after.insertAdjacentHTML('afterend',
       `<section class="interlude" id="interlude-${i + 1}" aria-label="${esc(String(it.line).replace(/<br>/g, ''))}">
         <div class="il-bg" style="background-image:url('${esc(it.image.thumb)}')">${big}</div>
         <div class="il-text"><p class="il-line">${line}</p>${it.sub ? `<p class="il-sub">${esc(it.sub)}</p>` : ''}</div>
       </section>`);
   });
+  // 大きな背景は帯に近づいてから読み込む
+  const bgIO = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const im = e.target.querySelector('img[data-src]');
+    if (im) { im.src = im.dataset.src; im.removeAttribute('data-src'); }
+    bgIO.unobserve(e.target);
+  }), { rootMargin: '300px 0px' });
+  document.querySelectorAll('.interlude').forEach(b => bgIO.observe(b));
   const seenIO = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('seen'); seenIO.unobserve(e.target); } }), { threshold: .35 });
   document.querySelectorAll('.interlude').forEach(b => seenIO.observe(b));
 

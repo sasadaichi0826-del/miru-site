@@ -16,7 +16,19 @@
   };
   const driveImg = (v, w = 1600) => `https://drive.google.com/thumbnail?id=${driveId(v)}&sz=w${w}`;
   const driveVideo = v => `https://drive.google.com/file/d/${driveId(v)}/preview`;
-  const imgSrc = (item, w) => (w <= 800 && item.thumb) ? item.thumb : item.drive ? driveImg(item.drive, w) : (item.src || item.thumb || '');
+  // 画像の大きさの段階：400以下は小サムネイル（assets/gallery-s・約23KB）、800以下は一覧用、それ以上はドライブ原寸
+  const small = u => u && u.startsWith('assets/gallery/') ? u.replace('assets/gallery/', 'assets/gallery-s/') : u;
+  const imgSrc = (item, w) => (w <= 400 && item.thumb) ? small(item.thumb) : (w <= 800 && item.thumb) ? item.thumb : item.drive ? driveImg(item.drive, w) : (item.src || item.thumb || '');
+  // 画面に近づいてから読み込む（背景画像・遅延 src）
+  const lazyIO = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target; lazyIO.unobserve(el);
+    if (el.dataset.bg) { el.style.backgroundImage = `url('${el.dataset.bg}')`; delete el.dataset.bg; }
+    if (el.dataset.src) { el.src = el.dataset.src; delete el.dataset.src; }
+    el.dispatchEvent(new CustomEvent('lazy:in'));
+  }), { rootMargin: '300px 0px' });
+  window.miruLazy = el => lazyIO.observe(el);
+  const observeLazy = root => (root || document).querySelectorAll('[data-bg],[data-src]').forEach(el => lazyIO.observe(el));
   const fmtDate = d => d ? d.replaceAll('-', '.') : '';
   const ext = url => url && !url.startsWith('#') ? ' target="_blank" rel="noopener"' : '';
   const img = (g, w, cls = '', eager = false) => `<img${cls ? ` class="${cls}"` : ''} src="${esc(imgSrc(g, w))}" alt="${esc(g.alt || g.title || '')}" loading="${eager ? 'eager' : 'lazy'}" decoding="async" referrerpolicy="no-referrer">`;
@@ -90,7 +102,7 @@
     const s = slides[heroIdx], b1 = slides[(heroIdx + 1) % slides.length], b2 = slides[(heroIdx + 2) % slides.length];
     const apply = () => {
       heroImg.src = imgSrc(s, 800); heroImg.alt = s.alt || s.title || '';
-      $('#pola-b1').src = imgSrc(b1, 800); $('#pola-b2').src = imgSrc(b2, 800);
+      $('#pola-b1').src = imgSrc(b1, 400); $('#pola-b2').src = imgSrc(b2, 400);
       $('#hero-cap').textContent = s.title || '';
       $('#hero-bubble').textContent = s.caption || 'きょうも、地球観察ちゅう。';
       heroDots.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-current', i === heroIdx));
@@ -157,24 +169,24 @@
     if (v.youtube) frame = `<iframe src="https://www.youtube-nocookie.com/embed/${esc(v.youtube)}" title="${esc(v.title)}" allowfullscreen loading="lazy"></iframe>`;
     else if (v.drive) frame = `<iframe src="${driveVideo(v.drive)}" title="${esc(v.title)}" allow="autoplay" allowfullscreen loading="lazy"></iframe>`;
     else frame = '<span class="soon">動画は もうすぐ とどきます</span>';
-    return `<div class="video rv"><span class="tape t1" aria-hidden="true"></span><div class="frame" style="background-image:url('${esc(v.poster || '')}')">${frame}</div><p>${esc(v.title)}<small>${esc(v.note)}</small></p>${v.credit ? `<p class="credit">${esc(v.credit)}</p>` : ''}</div>`;
+    return `<div class="video rv"><span class="tape t1" aria-hidden="true"></span><div class="frame" data-bg="${esc(v.poster || '')}">${frame}</div><p>${esc(v.title)}<small>${esc(v.note)}</small></p>${v.credit ? `<p class="credit">${esc(v.credit)}</p>` : ''}</div>`;
   }).join('');
 
   // ---- 音楽室：曲ごとにジャケットが替わるレコード ----
   const music = data.music || [];
   const jacketPool = [...byCat('地球観察帖｜おめかし'), ...byCat('キービジュアル'), ...byCat('みるの日常')].filter(g => g.thumb);
   // Sunoの公式ジャケット（music[].jacket）を優先し、無いときだけギャラリーから補う
-  const jacketFor = (m, i) => m.jacket ? { src: m.jacket, title: 'Suno ジャケット' }
+  const jacketFor = (m, i) => m.jacket ? { src: m.jacket, small: m.jacket.replace('/jackets/', '/jackets-s/').replace(/\.jpg$/, '.webp'), title: 'Suno ジャケット' }
     : byTitle(m.title)?.thumb ? byTitle(m.title) : jacketPool[(i * 5) % jacketPool.length];
   $('#track-list').innerHTML = music.map((m, i) => {
     const j = jacketFor(m, i);
-    return `<button type="button" role="option" class="track rv" data-i="${i}" aria-selected="false"><span class="mini">${j ? img(j, 400) : ''}</span><span class="tx"><strong>${esc(m.title)}</strong><small>${String(i + 1).padStart(2, '0')} · ${esc(m.genre)}</small></span></button>`;
+    return `<button type="button" role="option" class="track rv" data-i="${i}" aria-selected="false"><span class="mini">${j ? `<img src="${esc(j.small || imgSrc(j, 400))}" alt="" loading="lazy" decoding="async">` : ''}</span><span class="tx"><strong>${esc(m.title)}</strong><small>${String(i + 1).padStart(2, '0')} · ${esc(m.genre)}</small></span></button>`;
   }).join('');
   const tt = $('#turntable');
   const pick = (i, spin) => {
     const m = music[i]; if (!m) return;
     const j = jacketFor(m, i);
-    if (j) { $('#now-jacket').src = imgSrc(j, 800); $('#now-jacket').alt = `${m.title} のジャケット`; $('#now-label').src = imgSrc(j, 400); }
+    if (j) { const nj = $('#now-jacket'), nl = $('#now-label'); const set = (el, u) => (el.dataset.ready ? (el.src = u) : (el.dataset.src = u)); set(nj, imgSrc(j, 800)); nj.alt = `${m.title} のジャケット`; set(nl, j.small || imgSrc(j, 400)); }
     $('#now-title').textContent = m.title; $('#now-genre').textContent = m.genre; $('#now-link').href = m.url;
     $$('#track-list .track').forEach(b => b.setAttribute('aria-selected', b.dataset.i == i));
     tt.classList.remove('swap'); void tt.offsetWidth; tt.classList.add('swap');
@@ -182,6 +194,8 @@
   };
   $('#track-list').addEventListener('click', e => { const b = e.target.closest('.track'); if (b) pick(+b.dataset.i, true); });
   pick(0, false);
+  ['#now-jacket', '#now-label'].forEach(q => { const el = $(q); el.addEventListener('lazy:in', () => { el.dataset.ready = '1'; }); lazyIO.observe(el); });
+  observeLazy($('#video-list'));
 
   // ---- 物語 ----
   const st = data.story;
@@ -203,6 +217,7 @@
   // ---- ギャラリー（Codex版：ステージ＋一覧）＋カテゴリカード ----
   const cats = ['すべて', ...new Set(G.map(g => g.category))];
   const coverOf = c => (c === 'すべて' ? slides[0] : G.find(g => g.category === c && g.thumb)) || G.find(g => g.category === c);
+  let stageSeen = false;
   let activeView = 'stage', filtered = [...G], stageIdx = 0, stageAuto = !reduced, stageTimer = null, gridLimit = 24;
   const stageImg = $('#stage-img'), thumbStrip = $('#thumb-strip'), stageAutoBtn = $('#stage-auto');
   const firstLine = s => String(s || '').split('\n').find(x => x.trim()) || '';
@@ -213,7 +228,7 @@
     const apply = () => {
       stageImg.src = imgSrc(item, 800);
       const full = imgSrc(item, 1400);
-      if (full !== stageImg.src) { const pre = new Image(); pre.referrerPolicy = 'no-referrer'; pre.onload = () => { if (filtered[stageIdx] === item) stageImg.src = full; }; pre.src = full; }
+      if (stageSeen && full !== stageImg.src) { const pre = new Image(); pre.referrerPolicy = 'no-referrer'; pre.onload = () => { if (filtered[stageIdx] === item) stageImg.src = full; }; pre.src = full; }
       stageImg.alt = item.alt || item.title;
       $('#stage-cat').textContent = item.category;
       $('#stage-count').textContent = `${stageIdx + 1} / ${filtered.length}`;
@@ -232,7 +247,7 @@
   const renderGrid = () => {
     $('#gallery-list').innerHTML = filtered.slice(0, gridLimit).map((g, i) => {
       const memo = firstLine(g.note);
-      return `<figure data-idx="${i}">${img(g, 800)}<figcaption>${esc(g.title)}${memo && memo !== g.title ? `<small>${esc(memo)}</small>` : `<small>${esc(g.category)}</small>`}</figcaption></figure>`;
+      return `<figure data-idx="${i}">${img(g, 400)}<figcaption>${esc(g.title)}${memo && memo !== g.title ? `<small>${esc(memo)}</small>` : `<small>${esc(g.category)}</small>`}</figcaption></figure>`;
     }).join('');
     $('#gallery-more-wrap').hidden = filtered.length <= gridLimit || activeView !== 'grid';
   };
@@ -281,7 +296,7 @@
   });
   setCategory('すべて'); setView('stage');
   // ギャラリーが画面外のときは自動切り替えを止める
-  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) restartStage(); else clearInterval(stageTimer); })).observe($('#gallery-stage'));
+  new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { if (!stageSeen) { stageSeen = true; renderStage(stageIdx, false); } restartStage(); } else clearInterval(stageTimer); }), { rootMargin: '200px 0px' }).observe($('#gallery-stage'));
 
 
   // ---- リンク ----

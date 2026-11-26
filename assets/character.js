@@ -209,10 +209,11 @@
         const stream = tagList.filter(t => t.r.key === 'tagStream').map(t => t.r.value);
         iTarget.innerHTML = `<div class="intro-inner">
           <div class="intro-head"><p class="label">FIRST TIME?</p><h2 class="intro-title">${esc(intro.heading)}</h2>${has(intro.note) ? `<p class="sec-lead">${esc(intro.note)}</p>` : ''}</div>
-          <a class="intro-card intro-video" href="#videos"><span class="ic-img" style="background-image:url('${esc(v.poster || '')}')"><span class="play" aria-hidden="true">▶</span></span><span class="ic-tx"><small>まずはこの1本</small><strong>${esc(v.title)}</strong></span></a>
-          <a class="intro-card intro-song" href="${esc(intro.songAnchor || '#music')}" data-song="${esc(song?.title || '')}">${song?.jacket ? `<span class="ic-img" style="background-image:url('${esc(song.jacket)}')"></span>` : '<span class="ic-img ic-music" aria-hidden="true">♪</span>'}<span class="ic-tx"><small>${song ? '代表曲' : '音楽室'}</small><strong>${song ? esc(song.title) : `${(data.music || []).length}曲を聴いてみる`}</strong></span></a>
+          <a class="intro-card intro-video" href="#videos"><span class="ic-img" data-bg="${esc((v.poster || '').replace('assets/img/', 'assets/img/posters-s/'))}"><span class="play" aria-hidden="true">▶</span></span><span class="ic-tx"><small>まずはこの1本</small><strong>${esc(v.title)}</strong></span></a>
+          <a class="intro-card intro-song" href="${esc(intro.songAnchor || '#music')}" data-song="${esc(song?.title || '')}">${song?.jacket ? `<span class="ic-img" data-bg="${esc(song.jacket.replace('/jackets/', '/jackets-s/').replace(/\.jpg$/, '.webp'))}"></span>` : '<span class="ic-img ic-music" aria-hidden="true">♪</span>'}<span class="ic-tx"><small>${song ? '代表曲' : '音楽室'}</small><strong>${song ? esc(song.title) : `${(data.music || []).length}曲を聴いてみる`}</strong></span></a>
           ${stream.length ? `<p class="intro-tag">配信タグ：${stream.map(esc).join(' / ')}</p>` : ''}
         </div>`;
+        iTarget.querySelectorAll('[data-bg]').forEach(el => window.miruLazy?.(el));
         iTarget.querySelector('.intro-song').addEventListener('click', e => {
           const t = e.currentTarget.dataset.song; if (!t) return;
           const btn = [...document.querySelectorAll('#track-list .track')].find(b => b.querySelector('strong')?.textContent === t);
