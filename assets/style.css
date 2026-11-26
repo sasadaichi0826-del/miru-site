@@ -69,11 +69,65 @@ h2::after{content:"✦";color:var(--lav);margin-left:.4em;font-size:.7em}
 .gallery figure:hover{transform:translateY(-4px) rotate(-.5deg)}
 .gallery figcaption{padding:8px 12px;font-size:.85rem;font-weight:700}
 
-.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
-.links a{display:block;text-decoration:none;background:var(--card);border:2px solid var(--line);border-radius:20px;padding:16px 20px;transition:border-color .2s}
-.links a:hover{border-color:var(--lav)}
-.links strong{display:block;font-size:1.1rem}
-.links span{color:var(--muted);font-size:.85rem}
+.sec-lead{color:var(--muted);margin-top:-.4em}
+.more{display:inline-block;margin-top:16px;font-weight:700}
+
+/* 音楽 */
+.tracks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
+.track{position:relative;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:12px;align-items:center;text-decoration:none;color:var(--ink);
+  background:var(--card);border:2px solid var(--line);border-radius:18px;padding:10px 14px;transition:transform .2s,border-color .2s}
+.track:hover{transform:translateY(-3px);border-color:var(--lav)}
+.track .no{grid-row:span 2;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:.85rem;color:#fff}
+.tone-0 .no{background:#b9a7e6}.tone-1 .no{background:#f0a6c3}.tone-2 .no{background:#8fc5e8}.tone-3 .no{background:#f3c27a}
+.track strong{font-size:.95rem;line-height:1.3}
+.track small{grid-column:2;color:var(--muted);font-size:.72rem;line-height:1.3}
+.track .play{grid-row:1/3;grid-column:3;color:var(--lav);font-size:.8rem}
+
+/* 物語 */
+.story{display:grid;grid-template-columns:1fr 1.3fr;gap:32px;align-items:start}
+.story-art img{border-radius:20px;width:100%}
+.story-catch{font-size:1.2rem;font-weight:800;color:var(--plum);margin:0}
+.episodes{list-style:none;padding:0;margin:16px 0 20px;display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.episodes a{display:block;text-decoration:none;font-weight:700;font-size:.9rem;padding:6px 10px;border-radius:12px;background:var(--lav-soft)}
+.episodes a:hover{background:var(--pink)}
+.episodes span{font-size:.7rem;color:var(--muted);margin-right:6px}
+
+/* 制作ノート */
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+.note{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:2px dashed var(--lav);border-radius:20px;padding:18px 22px;transition:transform .2s}
+.note:hover{transform:rotate(-.6deg) translateY(-3px)}
+.note strong{font-size:1.05rem;color:var(--plum)}
+.note p{margin:.4em 0;font-size:.9rem}
+.note small{display:block;color:var(--muted);font-size:.75rem}
+.note .go{display:inline-block;margin-top:8px;font-weight:800;font-size:.85rem;color:#c77ba0}
+
+/* 動画 */
+.video .frame{position:relative}
+.soon{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);background:#fffc;border-radius:99px;padding:4px 14px;font-size:.8rem;font-weight:700;white-space:nowrap}
+.video .credit{padding-top:0;font-weight:400;font-size:.8rem;color:var(--muted)}
+
+/* リンク：ぷくぷくカード */
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px 20px}
+.lk{--c:#b9a7e6;--bg:#f3eeff;position:relative;display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--ink);
+  background:var(--bg);border:3px solid #fff;border-radius:999px;padding:12px 18px 12px 12px;
+  box-shadow:0 6px 0 var(--c),0 10px 24px #4b2f7a22;transition:transform .2s cubic-bezier(.3,1.6,.5,1),box-shadow .2s;
+  animation:bob 3.2s ease-in-out infinite;animation-delay:var(--d)}
+.lk-0{--c:#f08aa8;--bg:#ffe8ef}.lk-1{--c:#9b8ad6;--bg:#efeaff}.lk-2{--c:#7cc4a4;--bg:#e6f7ef}.lk-3{--c:#8fb8ea;--bg:#e8f2ff}.lk-4{--c:#f0b860;--bg:#fff3de}
+.lk:hover{transform:translateY(-6px) scale(1.04) rotate(-1.5deg);box-shadow:0 10px 0 var(--c),0 16px 30px #4b2f7a33;animation-play-state:paused}
+.lk:active{transform:translateY(3px) scale(.98);box-shadow:0 2px 0 var(--c)}
+.lk .ic{flex:none;width:48px;height:48px;border-radius:50%;background:var(--c);color:#fff;display:grid;place-items:center;border:3px solid #fff;transition:transform .4s}
+.lk .ic svg{width:24px;height:24px;fill:currentColor}
+.lk:hover .ic{transform:rotate(360deg)}
+.lk .tx{flex:1;min-width:0}
+.lk strong{display:block;font-size:1.1rem;line-height:1.3}
+.lk .tx span{display:block;font-size:.8rem;color:var(--muted);line-height:1.4}
+.lk .go{flex:none;width:28px;height:28px;border-radius:50%;background:#fff;color:var(--c);font-weight:800;display:grid;place-items:center;transition:transform .2s}
+.lk:hover .go{transform:translateX(4px)}
+.lk .sp{position:absolute;font-style:normal;color:var(--c);opacity:0;pointer-events:none;transition:opacity .2s,transform .4s}
+.lk .s1{top:-14px;left:24px}.lk .s2{top:-10px;right:30px}.lk .s3{bottom:-16px;right:60px}
+.lk:hover .sp{opacity:1}
+.lk:hover .s1{transform:translate(-6px,-6px) rotate(20deg)}.lk:hover .s2{transform:translate(6px,-8px)}.lk:hover .s3{transform:translateY(6px) scale(1.3)}
+@keyframes bob{50%{transform:translateY(-4px)}}
 
 .guide{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .guide h3{margin:0 0 4px}
@@ -93,6 +147,8 @@ footer{text-align:center;padding:40px 16px;color:var(--muted);font-size:.85rem}
   .hero{grid-template-columns:1fr;min-height:auto;text-align:center}
   .hero-art .miru{max-height:60vh}
   .guide{grid-template-columns:1fr}
+  .story{grid-template-columns:1fr}
+  .episodes{grid-template-columns:1fr}
   .news li,.schedule li{grid-template-columns:1fr}
   .news p,.schedule p{grid-column:1}
 }

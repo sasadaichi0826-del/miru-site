@@ -1,54 +1,397 @@
 {
   "_howto": "このファイルだけ編集すればサイトが更新されます。画像・動画は Google ドライブの共有リンク(またはファイルID)を drive に入れてください。詳しくは README.md。",
-
   "profile": {
     "name": "星麦みる",
     "nameEn": "HOSHIMUGI MIRU",
-    "tagline": ["ちきゅうのこと、", "まだよくわかんない。", "だから、みる。"],
-    "lead": "地球観察ちゅうの宇宙人。パンと甘いものがだいすき。",
-    "heroImage": { "src": "assets/img/miru-front.webp", "alt": "ラベンダーのツインテール、濃紫のベレー帽とリボン、パンの袖飾りとペンギンバッグを身につけた星麦みる" },
-    "about": "星麦みるは、地球を観察するためにやってきた宇宙人。日本語も地球の常識もまだ勉強中。相棒のぺーたんと、食べたり遊んだりしながら調査中です。",
+    "tagline": [
+      "ちきゅうって、",
+      "ふしぎ。"
+    ],
+    "lead": "はじめまして、星麦みるです。地球の「なんで？」を、あつめています。",
+    "heroImage": {
+      "src": "assets/img/miru-front.webp",
+      "alt": "ラベンダーのツインテール、濃紫のベレー帽とリボン、パンの袖飾りとペンギンバッグを身につけた星麦みる"
+    },
+    "about": "地球観察ちゅうの宇宙人。日本語も、地球の常識も勉強中。パンや甘いもの、ゲーム、サウナがだいすきです。相棒のぺーたんと、食べたり遊んだりしながら調査中。",
     "facts": [
-      { "label": "立場", "value": "地球観察ちゅうの宇宙人" },
-      { "label": "相棒", "value": "ぺーたん" },
-      { "label": "すきなもの", "value": "パン・甘いもの・牛乳・ゲーム・サウナ" },
-      { "label": "口ぐせ", "value": "「なんで？」「観察です」" }
+      {
+        "label": "立場",
+        "value": "地球観察ちゅうの宇宙人"
+      },
+      {
+        "label": "相棒",
+        "value": "ぺーたん"
+      },
+      {
+        "label": "すきなもの",
+        "value": "パン・甘いもの・牛乳・ゲーム・サウナ"
+      },
+      {
+        "label": "口ぐせ",
+        "value": "「なんで？」「観察です」"
+      }
     ]
   },
-
   "news": [
-    { "date": "2026-11-26", "tag": "お知らせ", "title": "公式サイトをおひっこししました", "body": "これからはここで、みるの観察記録をおとどけします。", "url": "" },
-    { "date": "2026-10-01", "tag": "MUSIC", "title": "MV「Blue hour」公開ちゅう", "body": "夜と朝のあいだ、まだ行き先を決めなくていい時間。", "url": "#videos" }
+    {
+      "date": "2026-11-26",
+      "tag": "お知らせ",
+      "title": "公式サイトをおひっこししました",
+      "body": "これからはここで、みるの観察記録をおとどけします。",
+      "url": ""
+    },
+    {
+      "date": "2026-10-01",
+      "tag": "MUSIC",
+      "title": "MV「Blue hour」公開ちゅう",
+      "body": "夜と朝のあいだ、まだ行き先を決めなくていい時間。",
+      "url": "#videos"
+    }
   ],
-
   "schedule": [
-    { "date": "2026-12-01", "time": "21:00", "title": "地球観察レポート #1（例）", "platform": "YouTube", "url": "" }
+    {
+      "date": "2026-12-01",
+      "time": "21:00",
+      "title": "地球観察レポート #1（例）",
+      "platform": "YouTube",
+      "url": ""
+    }
   ],
-
   "videos": [
-    { "title": "Blue hour（MV）", "note": "1:40", "drive": "", "youtube": "", "poster": "assets/img/blue-hour-preview.webp" }
+    {
+      "title": "まだまだ、まぶしい！（PV）",
+      "note": "1:29",
+      "drive": "",
+      "youtube": "",
+      "poster": "assets/img/mabushii-poster.webp",
+      "credit": "音源・歌：星麦みる / 作詞・作曲：sasabo"
+    },
+    {
+      "title": "Blue hour（MV）",
+      "note": "1:40",
+      "drive": "",
+      "youtube": "",
+      "poster": "assets/img/blue-hour-preview.webp",
+      "credit": "制作：Suno × アストラ"
+    }
   ],
-
   "gallery": [
-    { "title": "またあしたって、", "category": "みるの日常", "src": "assets/img/miru-hero-thumb.webp", "drive": "" },
-    { "title": "こんばんは、地球。", "category": "みるの日常", "src": "assets/img/miru-observation-thumb.webp", "drive": "" },
-    { "title": "銀河コンビニエンス", "category": "みるの日常", "src": "assets/img/miru-convenience-thumb.webp", "drive": "" },
-    { "title": "小さな宇宙人、大きな音。", "category": "みるの日常", "src": "assets/img/miru-jacket-thumb.webp", "drive": "" },
-    { "title": "にめいさま", "category": "みるの日常", "src": "assets/img/nimeisama-thumb.webp", "drive": "" },
-    { "title": "ぺーたんと、電波受信ちゅう。", "category": "みるの日常", "src": "assets/img/miru-space-observer-thumb.webp", "drive": "" },
-    { "title": "星麦みる ポートレート", "category": "みるの日常", "src": "assets/img/miru-portrait-thumb.webp", "drive": "" }
+    {
+      "title": "またあしたって、",
+      "category": "みるの日常",
+      "src": "assets/img/miru-hero-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "こんばんは、地球。",
+      "category": "みるの日常",
+      "src": "assets/img/miru-observation-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "銀河コンビニエンス",
+      "category": "みるの日常",
+      "src": "assets/img/miru-convenience-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "小さな宇宙人、大きな音。",
+      "category": "みるの日常",
+      "src": "assets/img/miru-jacket-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "にめいさま",
+      "category": "みるの日常",
+      "src": "assets/img/nimeisama-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "ぺーたんと、電波受信ちゅう。",
+      "category": "みるの日常",
+      "src": "assets/img/miru-space-observer-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "星麦みる ポートレート",
+      "category": "みるの日常",
+      "src": "assets/img/miru-portrait-thumb.webp",
+      "drive": ""
+    },
+    {
+      "title": "01 秋ニット",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/01-autumn-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "02 テックストリート",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/02-tech-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "03 マリン",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/03-marine-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "04 カフェ",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/04-cafe-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "05 アウトドア",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/05-outdoor-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "06 スマートベスト",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/06-vest-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "07 ルームウェア",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/07-room-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "08 館内着",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/08-lounge-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "09 冬ダッフル",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/09-winter-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "10 星空ワンピース",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/10-starry-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "11 宇宙パイロット",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/11-pilot-small.webp",
+      "drive": ""
+    },
+    {
+      "title": "12 ポップステージ",
+      "category": "衣装帖",
+      "src": "assets/img/outfits/12-stage-small.webp",
+      "drive": ""
+    }
   ],
-
   "links": [
-    { "label": "X", "sub": "@PWGFSG", "url": "https://x.com/PWGFSG" },
-    { "label": "note", "sub": "物語『フラクトアース』", "url": "https://note.com/glossy_serval594/m/me31933916ef8" },
-    { "label": "Suno", "sub": "みるの楽曲", "url": "https://suno.com/@sasadai" }
+    {
+      "label": "YouTube",
+      "sub": "動画・MV",
+      "url": "https://www.youtube.com/channel/UCGLhMQNMA7aE6UiMb7WhvnQ",
+      "icon": "youtube"
+    },
+    {
+      "label": "X",
+      "sub": "@miru_hoshimugi",
+      "url": "https://x.com/miru_hoshimugi",
+      "icon": "x"
+    },
+    {
+      "label": "note",
+      "sub": "物語・制作ノート",
+      "url": "https://note.com/glossy_serval594/m/me31933916ef8",
+      "icon": "note"
+    },
+    {
+      "label": "Suno",
+      "sub": "みるの楽曲",
+      "url": "https://suno.com/@sasadai",
+      "icon": "music"
+    },
+    {
+      "label": "フォトスタンプ",
+      "sub": "みるとつきみの透過PNG",
+      "url": "https://miru-photo-stamps.sasadaichi0826.chatgpt.site/",
+      "icon": "stamp"
+    }
   ],
-
   "guideline": {
     "intro": "ファンアート・切り抜きなど、みるを好きでいてくれる創作は大かんげいです。",
-    "ok": ["ファンアートの投稿（ハッシュタグをつけてくれるとうれしい）", "配信の切り抜き（出典リンクを記載）", "個人で楽しむためのアイコン・壁紙利用"],
-    "ng": ["公式と誤解される表現", "商用利用（事前にご相談ください）", "誰かを傷つける内容・公序良俗に反する内容"],
+    "ok": [
+      "ファンアートの投稿（ハッシュタグをつけてくれるとうれしい）",
+      "配信の切り抜き（出典リンクを記載）",
+      "個人で楽しむためのアイコン・壁紙利用"
+    ],
+    "ng": [
+      "公式と誤解される表現",
+      "商用利用（事前にご相談ください）",
+      "誰かを傷つける内容・公序良俗に反する内容"
+    ],
     "contact": ""
-  }
+  },
+  "music": [
+    {
+      "title": "楽しさ充電中",
+      "genre": "Chillout",
+      "url": "https://suno.com/song/544b434b-c93d-46ad-bde0-7dc3ba7e68e7"
+    },
+    {
+      "title": "くるくる地球観察",
+      "genre": "Kawaii Dance-Pop",
+      "url": "https://suno.com/song/9a31b537-828d-4dbb-bcd7-12faaf2c41d3"
+    },
+    {
+      "title": "ブルーアワー",
+      "genre": "J-Pop",
+      "url": "https://suno.com/song/50e2855a-0c12-4d54-9f3c-452f3ea49f8b"
+    },
+    {
+      "title": "まあいっか、もうひと駅",
+      "genre": "UK Garage",
+      "url": "https://suno.com/song/01eb8797-c0d1-44aa-ba5c-bcc08d632152"
+    },
+    {
+      "title": "しゅわddict",
+      "genre": "Techno",
+      "url": "https://suno.com/song/84c31c1a-9269-42d2-90a6-a07bf673e1a1"
+    },
+    {
+      "title": "Always",
+      "genre": "Chiptune",
+      "url": "https://suno.com/song/5f760f80-8ee2-4abd-b280-4a0b3d615534"
+    },
+    {
+      "title": "にめいさま",
+      "genre": "Alternative R&B",
+      "url": "https://suno.com/song/f27b0a87-1c73-47c3-aff0-0bbf4ff59a63"
+    },
+    {
+      "title": "NO MORE SWEET!",
+      "genre": "Electro House",
+      "url": "https://suno.com/song/9be1b636-08ba-4b00-be10-70ed3c94f5e0"
+    },
+    {
+      "title": "SUGAR offline",
+      "genre": "Kawaii Alternative Hip-Hop",
+      "url": "https://suno.com/song/8f0bd6c2-463b-40f2-a508-80d7fbb1a6a3"
+    },
+    {
+      "title": "いったん保存ね",
+      "genre": "sasabo / SUNO",
+      "url": "https://suno.com/song/b7a235c8-3cfa-4f30-b594-482bb339b07d"
+    },
+    {
+      "title": "地球観察ちゅう！",
+      "genre": "Electropop",
+      "url": "https://suno.com/song/1100843b-dee7-4c84-a9ae-aad0028cee28"
+    },
+    {
+      "title": "銀河コンビニエンス",
+      "genre": "Techno",
+      "url": "https://suno.com/song/e9478bf9-b1c3-43d5-8539-02cf7b87746e"
+    },
+    {
+      "title": "LITTLE BITE, BIG BEAT",
+      "genre": "Electro",
+      "url": "https://suno.com/song/b4e2926e-86b1-4cbf-a722-9a9d38629136"
+    },
+    {
+      "title": "Lavender Discovery",
+      "genre": "Future Bass / Chiptune",
+      "url": "https://suno.com/song/435c6740-9903-405b-8f21-af6817ceee98"
+    },
+    {
+      "title": "花火が悪い",
+      "genre": "Kawaii Electro-Pop / Future Bass",
+      "url": "https://suno.com/song/5385b770-8e52-4466-bef8-6a0ad11af26a"
+    },
+    {
+      "title": "ハズムヒカリ",
+      "genre": "Happy Hardcore / J-Core",
+      "url": "https://suno.com/song/893f4052-d2c1-49d7-96df-99aa35a87638"
+    }
+  ],
+  "story": {
+    "title": "フラクトアース",
+    "catch": "この星は、戦うには面白すぎる。",
+    "lead": "日常の星麦みるとは分けて楽しむ、日常SF × リアルロボットの物語。",
+    "description": "地球の「ふつう」をまだ知らない観測員・星麦みると、港で働く人々の、挿絵付き日常SF小説。",
+    "image": "assets/img/op-15-thumb.webp",
+    "magazineUrl": "https://note.com/glossy_serval594/m/me31933916ef8",
+    "episodes": [
+      {
+        "n": 1,
+        "title": "この星、おいしい",
+        "url": "https://note.com/glossy_serval594/n/na64368b6a05f"
+      },
+      {
+        "n": 2,
+        "title": "無駄な道",
+        "url": "https://note.com/glossy_serval594/n/n4ef2d6ead070"
+      },
+      {
+        "n": 3,
+        "title": "壊れたら直す",
+        "url": "https://note.com/glossy_serval594/n/nf2a5f4a55636"
+      },
+      {
+        "n": 4,
+        "title": "おすすめしない店",
+        "url": "https://note.com/glossy_serval594/n/n6c1510959cb0"
+      },
+      {
+        "n": 5,
+        "title": "なくした荷物",
+        "url": "https://note.com/glossy_serval594/n/nca77e789e621"
+      },
+      {
+        "n": 6,
+        "title": "正しい救助",
+        "url": "https://note.com/glossy_serval594/n/n04c2bba1a36a"
+      },
+      {
+        "n": 7,
+        "title": "雨の日の停止",
+        "url": "https://note.com/glossy_serval594/n/ne9d7d3b91324"
+      },
+      {
+        "n": 8,
+        "title": "イオの散歩",
+        "url": "https://note.com/glossy_serval594/n/n08c2a9332847"
+      },
+      {
+        "n": 9,
+        "title": "生き残れる自由",
+        "url": "https://note.com/glossy_serval594/n/nb5aeade121e2"
+      },
+      {
+        "n": 10,
+        "title": "帰りの切符",
+        "url": "https://note.com/glossy_serval594/n/nc84dece47b93"
+      }
+    ]
+  },
+  "footer": "© HOSHIMUGI MIRU · created by sasabo",
+  "notes": [
+    {
+      "title": "制作日誌｜一枚の絵に、少しずつ動きを",
+      "body": "「花火が悪い」のPV制作を、sasaboの言葉とともに紹介。",
+      "url": "https://note.com/glossy_serval594/n/n092042e63b13",
+      "credit": "文・投稿：AIアシスタント みる／企画：sasabo"
+    },
+    {
+      "title": "みるは、何を見つける子なのか。",
+      "body": "地球の小さな「どうして？」を、歌詞や絵、動画へ。",
+      "url": "https://note.com/glossy_serval594/n/nd2c57880df0a",
+      "credit": "文・投稿：AIアシスタント みる／企画・制作：sasabo"
+    }
+  ]
 }

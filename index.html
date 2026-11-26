@@ -16,7 +16,7 @@
 <header class="nav">
   <a class="logo" href="#top">星麦<span>みる</span></a>
   <nav>
-    <a href="#profile">プロフィール</a><a href="#news">お知らせ</a><a href="#schedule">スケジュール</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
+    <a href="#profile">プロフィール</a><a href="#news">お知らせ</a><a href="#schedule">スケジュール</a><a href="#music">音楽</a><a href="#story">物語</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
   </nav>
 </header>
 
@@ -60,6 +60,30 @@
     <div class="videos" id="video-list"></div>
   </section>
 
+  <section id="music">
+    <p class="kicker">MUSIC</p><h2>音楽室</h2>
+    <p class="sec-lead">のんびり充電する日も、もうひと駅だけ寄り道する日も。曲名を選ぶと Suno で聴けます。</p>
+    <div class="tracks" id="track-list"></div>
+    <a class="more" href="https://suno.com/@sasadai" target="_blank" rel="noopener">sasaboの公開曲をもっと聴く ↗</a>
+  </section>
+
+  <section id="story" class="card-sec story">
+    <div class="story-art"><img id="story-img" alt="ブルーアワーの港で語り合うみるとナナ" loading="lazy"></div>
+    <div>
+      <p class="kicker">FICTION / NOVEL</p><h2 id="story-title"></h2>
+      <p class="story-catch" id="story-catch"></p>
+      <p id="story-lead"></p>
+      <p class="sec-lead" id="story-desc"></p>
+      <ol class="episodes" id="episode-list"></ol>
+      <a class="btn" id="story-more" target="_blank" rel="noopener">noteで物語を読む ↗</a>
+    </div>
+  </section>
+
+  <section id="notes">
+    <p class="kicker">MAKING</p><h2>制作のノート</h2>
+    <div class="notes" id="note-list"></div>
+  </section>
+
   <section id="gallery">
     <p class="kicker">GALLERY</p><h2>ギャラリー</h2>
     <div class="filters" id="filters"></div>
@@ -67,7 +91,8 @@
   </section>
 
   <section id="links">
-    <p class="kicker">LINKS</p><h2>リンク</h2>
+    <p class="kicker">LINKS</p><h2>みるに会いにいく</h2>
+    <p class="sec-lead">ぽちっと押すと、みるのいる場所へワープします。</p>
     <div class="links" id="link-list"></div>
   </section>
 
@@ -82,7 +107,7 @@
   </section>
 </main>
 
-<footer>© 星麦みる</footer>
+<footer id="footer"></footer>
 
 <dialog id="lightbox"><button class="close" aria-label="閉じる">×</button><img alt=""><p></p></dialog>
 <script src="assets/app.js"></script>
