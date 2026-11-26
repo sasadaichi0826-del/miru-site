@@ -3045,5 +3045,13 @@
       "voices": [],
       "costumeIds": []
     }
-  ]
+  ],
+  "intro": {
+    "heading": "はじめましての方へ",
+    "videoTitle": "まだまだ、まぶしい！（PV）",
+    "songAnchor": "#music",
+    "songTitle": null,
+    "note": "まずはこの1本と、代表曲1曲から。",
+    "_howto": "videoTitle は videos[].title と一致させる。songTitle に music[].title を入れると代表曲として表示（null の間は音楽室への案内）"
+  }
 }
