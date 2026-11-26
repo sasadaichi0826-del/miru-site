@@ -4,112 +4,227 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>星麦みる 公式サイト</title>
-<meta name="description" content="地球観察ちゅうの宇宙人、星麦みるの公式サイト。">
+<meta name="description" content="地球観察ちゅうの宇宙人、星麦みるの公式サイト。みるの地球観察ノート。">
 <meta property="og:title" content="星麦みる 公式サイト">
-<meta property="og:description" content="ちきゅうのこと、まだよくわかんない。だから、みる。">
+<meta property="og:description" content="ちきゅうって、ふしぎ。地球観察ちゅうの宇宙人、星麦みるの観察ノート。">
 <meta property="og:image" content="assets/img/miru-front.webp">
+<script>
+  (function () {
+    var t; try { t = localStorage.getItem('miru-time'); } catch (e) {}
+    var h = new Date().getHours();
+    document.documentElement.dataset.time = t || (h >= 18 || h < 6 ? 'night' : 'day');
+    document.documentElement.classList.add('js');
+  })();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800&display=swap">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700;800;900&family=Zen+Maru+Gothic:wght@500;700&display=swap">
+<link rel="stylesheet" href="assets/style.css?v=renew-20261126">
 </head>
 <body>
+<a class="skip" href="#profile">本文へ移動</a>
+
+<div class="sky" aria-hidden="true">
+  <div class="layer stars" data-depth="0.15"></div>
+  <div class="layer clouds" data-depth="0.35"><i></i><i></i><i></i></div>
+</div>
+
 <header class="nav">
-  <a class="logo" href="#top">星麦<span>みる</span></a>
-  <nav>
-    <a href="#profile">プロフィール</a><a href="#news">お知らせ</a><a href="#schedule">スケジュール</a><a href="#music">音楽</a><a href="#story">物語</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
+  <a class="logo" href="#top"><span class="logo-star">✦</span>星麦<span>みる</span></a>
+  <nav aria-label="ページ内">
+    <a href="#profile">プロフィール</a><a href="#news">お知らせ</a><a href="#videos">動画</a><a href="#music">音楽室</a><a href="#story">物語</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
   </nav>
+  <button class="time-toggle" id="time-toggle" type="button" aria-label="昼と夜を切り替える"><span class="sun">☀</span><span class="moon">☾</span></button>
 </header>
 
 <main id="top">
+  <!-- ヒーロー：ロゴ＋大きなみる＋キービジュアルのポラロイド -->
   <section class="hero">
     <div class="hero-copy">
-      <p class="kicker" data-bind="profile.nameEn"></p>
-      <h1 id="hero-name"></h1>
+      <p class="label">EARTH OBSERVATION NOTE · <span data-bind="profile.nameEn"></span></p>
+      <h1 class="logotype" id="hero-name"></h1>
       <p class="tagline" id="tagline"></p>
       <p class="lead" data-bind="profile.lead"></p>
-      <a class="btn" href="#profile">みるのこと、しる</a>
+      <div class="hero-cta"><a class="btn" href="#profile">観察ノートをひらく</a></div>
+      <nav class="quick" id="quick-links" aria-label="みるに会いにいく"></nav>
     </div>
     <div class="hero-art">
       <div class="orbit" aria-hidden="true"></div>
+      <div class="polaroids layer" data-depth="0.25">
+        <div class="pola back2" aria-hidden="true"><img id="pola-b2" alt=""></div>
+        <div class="pola back1" aria-hidden="true"><img id="pola-b1" alt=""></div>
+        <button class="pola front hero-stage" id="hero-stage" type="button" aria-label="キービジュアルを拡大表示">
+          <span class="tape t1" aria-hidden="true"></span>
+          <img id="hero-img" alt="">
+          <span class="pola-cap" id="hero-cap"></span>
+        </button>
+      </div>
+      <img class="miru layer" data-depth="0.6" id="hero-miru" src="assets/img/miru-front.webp" alt="ラベンダーのツインテール、濃紫のベレー帽とリボン、パンの袖飾りとペンギンバッグを身につけた星麦みる" fetchpriority="high">
       <img class="deco star" src="assets/img/star-accent.webp" alt="" aria-hidden="true">
       <img class="deco bread" src="assets/img/bread-accent.webp" alt="" aria-hidden="true">
-      <img class="miru" id="hero-img" alt="">
-      <span class="bubble">地球観察ちゅう。</span>
+      <p class="bubble" id="hero-bubble">きょうも、地球観察ちゅう。</p>
+      <div class="hero-controls" id="hero-controls" aria-label="キービジュアル切り替え">
+        <button type="button" class="hc-btn" id="hero-prev" aria-label="前の画像">‹</button>
+        <div class="hc-dots" id="hero-dots"></div>
+        <button type="button" class="hc-btn" id="hero-next" aria-label="次の画像">›</button>
+        <button type="button" class="hc-btn hc-play" id="hero-play" aria-pressed="true" aria-label="自動切り替えを一時停止">❚❚</button>
+      </div>
     </div>
+    <a class="falling-star" href="#profile" aria-label="下へスクロール"><span></span></a>
   </section>
 
-  <section id="profile" class="card-sec">
-    <p class="kicker">HELLO, EARTH.</p>
-    <h2>プロフィール</h2>
-    <p data-bind="profile.about"></p>
-    <dl class="facts" id="facts"></dl>
+  <!-- 流れるフィルム帯 -->
+  <div class="film" aria-hidden="true"><div class="film-track" id="film-a"></div></div>
+
+  <!-- 01 プロフィール -->
+  <section id="profile" class="obs" data-no="01" data-vert="はじめまして、地球。" data-reveal="lines">
+    <header class="obs-head"><p class="label">HELLO, EARTH.</p><h2>プロフィール</h2></header>
+    <div class="profile-grid">
+      <div class="file">
+        <span class="tape t1" aria-hidden="true"></span>
+        <div class="file-head"><span>OBSERVER FILE</span><span>No. HM-001</span></div>
+        <p class="file-about" data-bind="profile.about"></p>
+        <dl class="facts" id="facts"></dl>
+      </div>
+      <div class="collage" id="profile-collage"></div>
+    </div>
+    <p class="sticky-note">地球の「なんで？」を、<br>あつめています。</p>
   </section>
 
-  <section id="news">
-    <p class="kicker">NEWS</p><h2>お知らせ</h2>
-    <ul class="news" id="news-list"></ul>
-  </section>
-
-  <section id="schedule">
-    <p class="kicker">SCHEDULE</p><h2>配信スケジュール</h2>
+  <!-- 02 お知らせ -->
+  <section id="news" class="obs" data-no="02" data-vert="地球からのおたより" data-reveal="tape">
+    <header class="obs-head"><p class="label">LETTERS</p><h2>お知らせ</h2></header>
+    <div class="letters" id="news-list"></div>
+    <h3 class="sub-h" id="schedule">配信スケジュール</h3>
     <ul class="schedule" id="schedule-list"></ul>
   </section>
 
-  <section id="videos">
-    <p class="kicker">MOVIE</p><h2>動画</h2>
+  <!-- 03 動画 -->
+  <section id="videos" class="obs" data-no="03" data-vert="うごく、みる。" data-reveal="tape">
+    <header class="obs-head"><p class="label">MOVIE</p><h2>動画</h2></header>
     <div class="videos" id="video-list"></div>
   </section>
 
-  <section id="music">
-    <p class="kicker">MUSIC</p><h2>音楽室</h2>
-    <p class="sec-lead">のんびり充電する日も、もうひと駅だけ寄り道する日も。曲名を選ぶと Suno で聴けます。</p>
-    <div class="tracks" id="track-list"></div>
-    <a class="more" href="https://suno.com/@sasadai" target="_blank" rel="noopener">sasaboの公開曲をもっと聴く ↗</a>
-  </section>
-
-  <section id="story" class="card-sec story">
-    <div class="story-art"><img id="story-img" alt="ブルーアワーの港で語り合うみるとナナ" loading="lazy"></div>
-    <div>
-      <p class="kicker">FICTION / NOVEL</p><h2 id="story-title"></h2>
-      <p class="story-catch" id="story-catch"></p>
-      <p id="story-lead"></p>
-      <p class="sec-lead" id="story-desc"></p>
-      <ol class="episodes" id="episode-list"></ol>
-      <a class="btn" id="story-more" target="_blank" rel="noopener">noteで物語を読む ↗</a>
+  <!-- 04 音楽室 -->
+  <section id="music" class="obs night-sec" data-no="04" data-vert="きょうは、どんな地球を聴こう。" data-reveal="twinkle">
+    <header class="obs-head"><p class="label">MUSIC ROOM</p><h2>音楽室</h2></header>
+    <div class="record-room">
+      <div class="turntable" id="turntable">
+        <div class="jacket"><img id="now-jacket" alt=""></div>
+        <div class="deck">
+          <div class="vinyl"><div class="vinyl-label"><img id="now-label" alt=""><small>HOSHIMUGI MIRU</small></div></div>
+          <div class="arm" aria-hidden="true"></div>
+        </div>
+        <p class="now"><strong id="now-title">—</strong><span id="now-genre"></span></p>
+        <a class="btn listen" id="now-link" target="_blank" rel="noopener">Sunoで聴く ↗</a>
+        <p class="bubble small">これは地球の電波ですか？</p>
+      </div>
+      <div>
+        <p class="sec-lead">のんびり充電する日も、もうひと駅だけ寄り道する日も。曲を選ぶとレコードが回ります。</p>
+        <div class="tracks" id="track-list" role="listbox" aria-label="楽曲"></div>
+        <a class="more" href="https://suno.com/@sasadai" target="_blank" rel="noopener">sasaboの公開曲をもっと聴く ↗</a>
+      </div>
     </div>
   </section>
 
-  <section id="notes">
-    <p class="kicker">MAKING</p><h2>制作のノート</h2>
+  <!-- 05 物語 -->
+  <section id="story" class="obs" data-no="05" data-vert="この星は、戦うには面白すぎる。" data-reveal="lines">
+    <header class="obs-head"><p class="label">FICTION / NOVEL</p><h2 id="story-title">物語</h2></header>
+    <div class="story">
+      <figure class="story-art taped"><span class="tape t1"></span><span class="tape t2"></span><img id="story-img" alt="ブルーアワーの港で語り合うみるとナナ" loading="lazy"></figure>
+      <div>
+        <p class="story-catch" id="story-catch"></p>
+        <p id="story-lead"></p>
+        <p class="sec-lead" id="story-desc"></p>
+        <ol class="episodes" id="episode-list"></ol>
+        <a class="btn" id="story-more" target="_blank" rel="noopener">noteで物語を読む ↗</a>
+      </div>
+    </div>
+    <div class="cast" id="story-cast"></div>
+    <h3 class="sub-h" id="notes">制作のノート</h3>
     <div class="notes" id="note-list"></div>
   </section>
 
-  <section id="gallery">
-    <p class="kicker">GALLERY</p><h2>ギャラリー</h2>
-    <div class="filters" id="filters"></div>
-    <div class="gallery" id="gallery-list"></div>
+  <div class="film reverse" aria-hidden="true"><div class="film-track" id="film-b"></div></div>
+
+  <!-- 06 ギャラリー（Codex版のステージ＋一覧を継承） -->
+  <section id="gallery" class="obs" data-no="06" data-vert="あたりまえの中に、まだ知らないこと。" data-reveal="tape">
+    <header class="obs-head"><p class="label">GALLERY</p><h2>ギャラリー</h2></header>
+    <p class="sec-lead">観察した地球を、テーマごとにどうぞ。カードを選ぶとそのテーマだけ見られます。</p>
+    <div class="cat-cards" id="filters" role="group" aria-label="カテゴリ"></div>
+    <div class="gallery-toolbar">
+      <div class="view-switch" role="group" aria-label="表示切り替え">
+        <button type="button" data-view="stage" aria-pressed="true">大きく見る</button>
+        <button type="button" data-view="grid" aria-pressed="false">一覧で見る</button>
+      </div>
+    </div>
+    <div class="stage-wrap" id="gallery-stage">
+      <div class="stage-main">
+        <button type="button" class="stage-nav prev" id="stage-prev" aria-label="前の画像">‹</button>
+        <figure class="stage-figure" id="stage-figure">
+          <span class="tape t1" aria-hidden="true"></span>
+          <img id="stage-img" alt="" referrerpolicy="no-referrer">
+          <figcaption>
+            <div class="stage-meta"><span class="tag" id="stage-cat"></span><span class="stage-count" id="stage-count"></span></div>
+            <strong id="stage-title"></strong>
+            <p id="stage-note"></p>
+          </figcaption>
+        </figure>
+        <button type="button" class="stage-nav next" id="stage-next" aria-label="次の画像">›</button>
+      </div>
+      <div class="stage-bar">
+        <button type="button" class="stage-auto" id="stage-auto" aria-pressed="true">❚❚ 自動切り替え ON</button>
+        <span class="stage-hint">← → キーやサムネイルでも切り替えできます</span>
+      </div>
+      <div class="thumb-strip" id="thumb-strip" aria-label="サムネイル一覧"></div>
+    </div>
+    <div class="gallery" id="gallery-list" hidden></div>
+    <div class="gallery-more-wrap" id="gallery-more-wrap" hidden>
+      <button type="button" class="btn" id="gallery-more">もっと観察する</button>
+    </div>
   </section>
 
-  <section id="links">
-    <p class="kicker">LINKS</p><h2>みるに会いにいく</h2>
+  <!-- 07 リンク -->
+  <section id="links" class="obs" data-no="07" data-vert="みるに、会いにいく。" data-reveal="twinkle">
+    <header class="obs-head"><p class="label">LINKS</p><h2>みるに会いにいく</h2></header>
     <p class="sec-lead">ぽちっと押すと、みるのいる場所へワープします。</p>
     <div class="links" id="link-list"></div>
   </section>
 
-  <section id="guideline" class="card-sec">
-    <p class="kicker">GUIDELINE</p><h2>ファン活動ガイドライン</h2>
-    <p data-bind="guideline.intro"></p>
-    <div class="guide">
-      <div><h3>OK だよ</h3><ul id="guide-ok"></ul></div>
-      <div><h3>ごめんね</h3><ul id="guide-ng"></ul></div>
+  <!-- 08 ガイドライン -->
+  <section id="guideline" class="obs" data-no="08" data-reveal="lines">
+    <header class="obs-head"><p class="label">GUIDELINE</p><h2>ファン活動ガイドライン</h2></header>
+    <div class="file">
+      <p data-bind="guideline.intro"></p>
+      <div class="guide">
+        <div><h3><span class="stamp ok">OK</span>だよ</h3><ul id="guide-ok"></ul></div>
+        <div><h3><span class="stamp ng">NG</span>ごめんね</h3><ul id="guide-ng"></ul></div>
+      </div>
+      <p class="contact" id="contact"></p>
     </div>
-    <p class="contact" id="contact"></p>
   </section>
 </main>
 
-<footer id="footer"></footer>
+<footer class="sleep">
+  <div class="sleep-art"><img id="sleep-img" alt="本の上でお昼寝するみる" loading="lazy"><span class="z z1">z</span><span class="z z2">z</span><span class="z z3">Z</span></div>
+  <p class="good-night">きょうの観察は、ここまで。<br>また、あした。</p>
+  <p class="copy" id="footer"></p>
+</footer>
 
-<dialog id="lightbox"><button class="close" aria-label="閉じる">×</button><img alt=""><p></p></dialog>
-<script src="assets/app.js?v=gallery210-20261126"></script>
+<div class="visitor" id="visitor" aria-hidden="true"><img src="assets/img/petan.png" alt=""><img class="toast" src="assets/img/bread-accent.webp" alt=""></div>
+
+<dialog id="lightbox">
+  <button class="close" aria-label="閉じる">×</button>
+  <button class="lb-nav prev" id="lb-prev" aria-label="前の画像">‹</button>
+  <div class="lb-body">
+    <img alt="" referrerpolicy="no-referrer">
+    <div class="lb-caption">
+      <div class="lb-meta"><span class="tag" id="lb-cat"></span><span id="lb-count"></span></div>
+      <p id="lb-title"></p>
+      <small id="lb-note"></small>
+    </div>
+  </div>
+  <button class="lb-nav next" id="lb-next" aria-label="次の画像">›</button>
+</dialog>
+<script src="assets/app.js?v=renew-20261126"></script>
 </body>
 </html>

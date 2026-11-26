@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>まだ観察してない場所 | 星麦みる</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700;900&display=swap">
+<style>
+  :root{--plum:#4b2f7a;--rose:#c77ba0;--lav:#b9a7e6;--ink:#3a2c55;--muted:#7a6b94;--bg:#fffaf3}
+  @media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#241640;--ink:#f3ecff;--plum:#e5d9ff;--muted:#bfb1dc}}
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px 16px;background:var(--bg);color:var(--ink);font-family:"M PLUS Rounded 1c",system-ui,sans-serif;text-align:center;overflow:hidden}
+  .num{font-size:clamp(5rem,22vw,10rem);font-weight:900;line-height:1;color:var(--plum);letter-spacing:.04em}
+  .num span{display:inline-block;color:var(--rose);animation:float 3s ease-in-out infinite}
+  img{width:min(200px,50vw);margin:8px auto 0;animation:float 4s ease-in-out infinite reverse}
+  .bubble{display:inline-block;margin:18px 0 6px;background:#fff;color:#3a2c55;border:2px solid var(--lav);box-shadow:0 5px 0 var(--lav);padding:10px 20px;border-radius:22px;font-weight:900;font-size:1.1rem}
+  p{color:var(--muted)}
+  a{display:inline-block;margin-top:14px;padding:12px 26px;border-radius:99px;background:#2e1b4f;color:#fff;text-decoration:none;font-weight:900;box-shadow:0 6px 0 #1a0f30}
+  .s{position:fixed;color:var(--lav);animation:tw 2s ease-in-out infinite alternate}
+  @keyframes float{50%{transform:translateY(-10px)}}
+  @keyframes tw{to{opacity:.2;transform:scale(.6)}}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+  <i class="s" style="left:12%;top:18%">✦</i><i class="s" style="right:14%;top:26%;animation-delay:.6s">✧</i><i class="s" style="left:20%;bottom:16%;animation-delay:1.1s">✦</i>
+  <main>
+    <div class="num">4<span>0</span>4</div>
+    <img src="/miru-site/assets/img/petan.png" alt="首をかしげるぺーたん">
+    <div class="bubble">ここは、まだ観察してない場所。</div>
+    <p>ページが見つかりませんでした。<br>まだよくわかんないけど、ノートの最初にもどろう。</p>
+    <a href="/miru-site/">観察ノートにもどる</a>
+  </main>
+</body>
+</html>
