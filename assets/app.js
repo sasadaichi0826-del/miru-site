@@ -256,6 +256,9 @@
     filtered = cat === 'すべて' ? [...G] : G.filter(g => g.category === cat);
     stageIdx = 0; gridLimit = 24;
     $$('#filters button').forEach(b => b.setAttribute('aria-pressed', b.dataset.cat === cat));
+    // 一覧ページへ絞り込みを引き継ぐ（B-7）
+    const all = $('#gallery-all-link');
+    if (all) all.href = cat === 'すべて' ? 'gallery.html' : `gallery.html?cat=${encodeURIComponent(cat)}`;
     renderThumbs(); renderStage(0, false); renderGrid(); restartStage();
   };
   const setView = view => {

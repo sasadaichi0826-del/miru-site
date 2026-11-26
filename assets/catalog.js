@@ -41,7 +41,9 @@
       $('#gallery-list').addEventListener('keydown', e => {if(e.key==='Enter'||e.key===' '){const figure=e.target.closest('figure');if(figure){e.preventDefault();open(figure);}}});
       box.addEventListener('click', e => {if(e.target===box||e.target.matches('.close')) box.close();});
       box.addEventListener('close', () => opener?.focus());
-      render('すべて');
+      // トップから ?cat=カテゴリ名 で来たら、その絞り込みで開く（無効値・未指定は「すべて」）
+      const want = new URLSearchParams(location.search).get('cat');
+      render(want && categories.includes(want) ? want : 'すべて');
     }
     $('#footer')?.replaceChildren(document.createTextNode(data.footer || '© HOSHIMUGI MIRU'));
   } catch {
