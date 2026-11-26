@@ -2948,7 +2948,12 @@
         }
       ],
       "voices": [],
-      "costumeIds": []
+      "costumeIds": [
+        "outfit-09-winter",
+        "outfit-10-starry",
+        "outfit-11-pilot",
+        "outfit-12-stage"
+      ]
     },
     {
       "id": "tsukimi",
@@ -3043,7 +3048,11 @@
         }
       ],
       "voices": [],
-      "costumeIds": []
+      "costumeIds": [
+        "selfie-knit-night-terrace",
+        "selfie-seaside-fisheye",
+        "selfie-warm-car"
+      ]
     }
   ],
   "intro": {
@@ -3053,5 +3062,42 @@
     "songTitle": null,
     "note": "まずはこの1本と、代表曲1曲から。",
     "_howto": "videoTitle は videos[].title と一致させる。songTitle に music[].title を入れると代表曲として表示（null の間は音楽室への案内）"
-  }
+  },
+  "relationship": {
+    "_howto": "copy と qa は draft:true の間は本番に出ない（?draft=1 で確認できる）。本人確認が済んだら draft を外す。",
+    "image": {
+      "src": "",
+      "drive": "1oWOoYgRVFrBFg210wbqC7EiPdqE8Fmtr",
+      "thumb": "assets/gallery/selfie-knit-night-terrace.webp",
+      "alt": "ニット姿で夜のテラス"
+    },
+    "copy": "観察の先輩と、後輩と。",
+    "copyDraft": true,
+    "qa": [
+      {
+        "from": "miru",
+        "q": "つきみ先輩のすごいところは？",
+        "a": "（文案は仮置き・公開前に本人確認）",
+        "draft": true
+      },
+      {
+        "from": "tsukimi",
+        "q": "みるの第一印象は？",
+        "a": "（文案は仮置き・公開前に本人確認）",
+        "draft": true
+      }
+    ]
+  },
+  "lore": [
+    {
+      "title": "観察任務について",
+      "body": null,
+      "character": "miru"
+    },
+    {
+      "title": "ぺーたんについて",
+      "body": null,
+      "character": "miru"
+    }
+  ]
 }

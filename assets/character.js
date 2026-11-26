@@ -7,7 +7,10 @@
     const $ = s => document.querySelector(s);
     const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
     const has = v => v !== null && v !== undefined && v !== '';
-    const isDraft = o => o && o.draft === true;
+    // 仮置き文案は本番で出さない。?draft=1 を付けたときだけ「仮置き」札付きで確認できる
+    const preview = new URLSearchParams(location.search).has('draft');
+    const isDraft = o => !preview && o && o.draft === true;
+    const badge = o => (preview && o && o.draft === true) ? '<span class="draft-badge">仮置き・本人確認前</span>' : '';
     const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
     const chars = data.characters || [];
     const G = data.gallery || [];
@@ -53,7 +56,7 @@
       const lore = c => {
         const items = (data.lore || []).filter(l => !isDraft(l) && has(l.title) && has(l.body) && (!l.character || l.character === c.id));
         if (!items.length) return '';
-        return `<div class="lore"><h4 class="char-sub"><span class="label">EARTH NOTES</span>地球観察ノート</h4><p class="lore-note">これは物語ではなく、日常の観察記録です。</p>${items.map(l => `<details><summary>${esc(l.title)}</summary><p>${esc(l.body)}</p></details>`).join('')}</div>`;
+        return `<div class="lore"><h4 class="char-sub"><span class="label">EARTH NOTES</span>地球観察ノート</h4><p class="lore-note">これは物語ではなく、日常の観察記録です。</p>${items.map(l => `<details><summary>${esc(l.title)}${badge(l)}</summary><p>${esc(l.body)}</p></details>`).join('')}</div>`;
       };
 
       tabs.innerHTML = chars.map((c, i) => `<button type="button" role="tab" id="tab-${esc(c.id)}" aria-controls="panel-${esc(c.id)}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-id="${esc(c.id)}"><small>${esc(c.fileNo)}</small><span class="char-name">${esc(c.name)}</span></button>`).join('');
@@ -169,14 +172,16 @@
     if (relSec) {
       const qa = (rel?.qa || []).filter(x => !isDraft(x) && has(x.q) && has(x.a));
       const img = rel?.image && (has(rel.image.src) || has(rel.image.drive) || has(rel.image.thumb)) ? rel.image : null;
-      if (!rel || (!img && !has(rel.copy) && !qa.length)) relSec.remove();
+      const copyOk = rel && has(rel.copy) && !isDraft({ draft: rel.copyDraft });
+      // 文章（コピーか Q&A）が1つも公開できない間は、写真だけの枠を出さずにセクションごと外す
+      if (!rel || (!copyOk && !qa.length)) relSec.remove();
       else {
         const nameOf = id => chars.find(c => c.id === id)?.name || id;
         relSec.querySelector('.rel-body').innerHTML = `
           ${img ? `<figure class="rel-photo taped"><span class="tape t1" aria-hidden="true"></span><img src="${esc(imgSrc(img, 800))}" alt="${esc(img.alt)}" loading="lazy" referrerpolicy="no-referrer"></figure>` : ''}
           <div class="rel-text">
-            ${has(rel.copy) ? `<p class="rel-copy">${esc(rel.copy)}</p>` : ''}
-            ${qa.length ? `<div class="rel-qa">${qa.map(x => `<div class="say from-${esc(x.from)}"><p class="who">${esc(nameOf(x.from))}</p><p class="q">${esc(x.q)}</p><p class="a">${esc(x.a)}</p></div>`).join('')}</div>` : ''}
+            ${copyOk ? `<p class="rel-copy">${esc(rel.copy)}${badge({ draft: rel.copyDraft })}</p>` : ''}
+            ${qa.length ? `<div class="rel-qa">${qa.map(x => `<div class="say from-${esc(x.from)}"><p class="who">${esc(nameOf(x.from))}${badge(x)}</p><p class="q">${esc(x.q)}</p><p class="a">${esc(x.a)}</p></div>`).join('')}</div>` : ''}
           </div>`;
         if (img) relSec.querySelector('.rel-photo').addEventListener('click', () => openLightbox([{ ...img, title: rel.copy || '' }], 0));
       }
@@ -254,7 +259,7 @@
     if (fTarget) {
       const items = (data.faq || []).filter(f => !isDraft(f) && has(f.q) && has(f.a));
       if (!items.length) fTarget.remove();
-      else fTarget.querySelector('.faq-list').innerHTML = items.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('');
+      else fTarget.querySelector('.faq-list').innerHTML = items.map(f => `<details><summary>${esc(f.q)}${badge(f)}</summary><p>${esc(f.a)}</p></details>`).join('');
     }
 
     // 空で外れたセクションがあっても、見出しの星座番号は連番にする
