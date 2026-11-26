@@ -164,7 +164,9 @@
   // ---- 音楽室：曲ごとにジャケットが替わるレコード ----
   const music = data.music || [];
   const jacketPool = [...byCat('地球観察帖｜おめかし'), ...byCat('キービジュアル'), ...byCat('みるの日常')].filter(g => g.thumb);
-  const jacketFor = (m, i) => byTitle(m.title)?.thumb ? byTitle(m.title) : jacketPool[(i * 5) % jacketPool.length];
+  // Sunoの公式ジャケット（music[].jacket）を優先し、無いときだけギャラリーから補う
+  const jacketFor = (m, i) => m.jacket ? { src: m.jacket, title: 'Suno ジャケット' }
+    : byTitle(m.title)?.thumb ? byTitle(m.title) : jacketPool[(i * 5) % jacketPool.length];
   $('#track-list').innerHTML = music.map((m, i) => {
     const j = jacketFor(m, i);
     return `<button type="button" role="option" class="track rv" data-i="${i}" aria-selected="false"><span class="mini">${j ? img(j, 400) : ''}</span><span class="tx"><strong>${esc(m.title)}</strong><small>${String(i + 1).padStart(2, '0')} · ${esc(m.genre)}</small></span></button>`;
@@ -173,7 +175,7 @@
   const pick = (i, spin) => {
     const m = music[i]; if (!m) return;
     const j = jacketFor(m, i);
-    if (j) { $('#now-jacket').src = imgSrc(j, 800); $('#now-jacket').alt = `${m.title} のジャケット（${j.title}）`; $('#now-label').src = imgSrc(j, 400); }
+    if (j) { $('#now-jacket').src = imgSrc(j, 800); $('#now-jacket').alt = `${m.title} のジャケット`; $('#now-label').src = imgSrc(j, 400); }
     $('#now-title').textContent = m.title; $('#now-genre').textContent = m.genre; $('#now-link').href = m.url;
     $$('#track-list .track').forEach(b => b.setAttribute('aria-selected', b.dataset.i == i));
     tt.classList.remove('swap'); void tt.offsetWidth; tt.classList.add('swap');

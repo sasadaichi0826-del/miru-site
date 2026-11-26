@@ -9,7 +9,7 @@
     const data = await response.json();
     if (document.body.dataset.catalog === 'music') {
       const tracks = data.music || [];
-      $('#track-list').innerHTML = tracks.map((m,i) => `<a class="track tone-${i%4}" href="${esc(m.url)}" target="_blank" rel="noopener"><span class="no">${String(i+1).padStart(2,'0')}</span><strong>${esc(m.title)}</strong><small>${esc(m.genre)}</small><span class="play" aria-hidden="true">▶</span></a>`).join('');
+      $('#track-list').innerHTML = tracks.map((m,i) => `<a class="track tone-${i%4}" href="${esc(m.url)}" target="_blank" rel="noopener">${m.jacket ? `<img class="jk" src="${esc(m.jacket)}" alt="" loading="lazy">` : `<span class="no">${String(i+1).padStart(2,'0')}</span>`}<strong>${esc(m.title)}</strong><small>${esc(m.genre)}</small><span class="play" aria-hidden="true">▶</span></a>`).join('');
       status.textContent = `全${tracks.length}曲`;
     } else {
       const items = data.gallery || [];
