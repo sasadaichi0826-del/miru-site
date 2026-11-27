@@ -3349,6 +3349,13 @@
     "_howto": "全面壁紙。sets の画像がフェードで切り替わる。sectionSets でセクションごとの組を指定（home=ヒーロー、novel=物語、footer=フッター）。画像は文字なし・横長。interludes はセクション間の大きな一言の帯。",
     "intervalMs": 13500,
     "fadeMs": 2500,
+    "timeOfDay": {
+      "_howto": "時間帯（朝5〜10時／昼10〜16時／夕16〜19時／夜19〜5時）ごとに、hero の何枚目（0始まり）から見せるか。",
+      "morning": 1,
+      "day": 3,
+      "evening": 4,
+      "night": 0
+    },
     "sets": {
       "hero": [
         {
@@ -3559,5 +3566,124 @@
       "draft": true
     }
   ],
+  "room": {
+    "_howto": "トップの観察基地。image.pc / image.sp に部屋の絵（webp・各300KB前後）を入れると、既存ヒーローの代わりに部屋を表示する。null の間は既存ヒーローの上にホットスポットを仮置き。座標は .hero-art に対する %（x,y=左上、w,h=大きさ）。sp を書くとスマホ幅だけその座標を使う。miru はみるをつつける範囲。draft:true の間は本番に出ない（?draft=1 で確認）。",
+    "draft": true,
+    "image": {
+      "pc": "assets/img/room-base.webp",
+      "sp": null,
+      "alt": "みるの地球観察基地"
+    },
+    "miru": { "x": 54, "y": 16, "w": 20, "h": 64, "sp": { "x": 50, "y": 14, "w": 28, "h": 66 } },
+    "hotspots": [
+      { "id": "notebook", "label": "観察ノート", "x": 47, "y": 49, "w": 17, "h": 12, "action": "openNotebook", "sp": { "x": 44, "y": 47, "w": 22, "h": 14 } },
+      { "id": "radio", "label": "ラジオ", "x": 78, "y": 26, "w": 16, "h": 14, "action": "goMusic", "cardId": "card-10", "sp": { "x": 76, "y": 24, "w": 20, "h": 15 } },
+      { "id": "petan", "label": "ぺーたん", "x": 1, "y": 73, "w": 14, "h": 16, "action": "findCard", "cardId": "card-03", "sp": { "x": 0, "y": 71, "w": 18, "h": 17 } }
+    ]
+  },
+  "reactions": {
+    "_howto": "みるをつついたときの台詞。tap=ふつう、rapid.5=5回連打（おこりんぼ）、rapid.10=10回連打（隠しカード）、idle=放置でぺーたんが居眠り、wake=ぺーたんを起こしたとき、petan=ぺーたんをつついたとき。draft:true の間は本番に出ない。",
+    "draft": true,
+    "tap": [
+      "なあに？ 観察ちゅうだよ。",
+      "パンのにおい、した？",
+      "ちきゅうって、ふしぎだね。",
+      "いま、メモしてるとこ！",
+      "それ、なんで？",
+      "観察です。",
+      "えへへ、くすぐったい。",
+      "ぺーたん、起きてる？"
+    ],
+    "rapid": {
+      "5": [
+        "もー！ つつきすぎ！",
+        "ぷんぷん。観察のじゃまです！",
+        "おこりんぼモード、はつどう！"
+      ],
+      "10": [
+        "……ひみつ、見つかっちゃった。"
+      ]
+    },
+    "idle": [
+      "すぴー……",
+      "パン……むにゃ……",
+      "zzz……"
+    ],
+    "wake": [
+      "はっ！ 起きてます！",
+      "ぺたっ！（びっくり）"
+    ],
+    "petan": [
+      "ぺたん！",
+      "ぺたぺた……",
+      "（ぺーたんが手をふった）"
+    ]
+  },
+  "greetings": {
+    "_howto": "ヒーローの挨拶。訪問者の時刻で morning/day/evening/night を出し分け。return は2回目以降の訪問で添える一言（{n} に回数が入る）。draft:true の間は本番に出ない。",
+    "draft": true,
+    "morning": [
+      "おはよう！ 朝の観察、はじめるよ。",
+      "朝のパン、焼けたかな？"
+    ],
+    "day": [
+      "こんにちは！ きょうも観察びより。",
+      "おひるの地球、まぶしいね。"
+    ],
+    "evening": [
+      "夕方パトロールちゅう！",
+      "空がオレンジ。なんで？"
+    ],
+    "night": [
+      "こんばんは。夜の観察は、しずかにね。",
+      "星、いっぱい見えるかな？"
+    ],
+    "return": [
+      "また来たね。{n}回目の観察だよ！",
+      "おかえり！ {n}回目の観察、いっしょにしよ。"
+    ]
+  },
+  "daily": [
+    { "q": "なんで、パンはふくらむの？", "a": "生地のなかで、ちいさな酵母がぷくぷく息をしてるんだって。……観察したい！", "image": null, "draft": true },
+    { "q": "なんで、空は青いの？", "a": "青い光が、いちばん散らばりやすいから。じゃあ夕方はオレンジなの、なんで？", "image": null, "draft": true },
+    { "q": "なんで、においだけでお腹がすくの？", "a": "からだが「もうすぐごはん！」って、先に準備しちゃうんだって。", "image": null, "draft": true },
+    { "q": "なんで、電車はがたんごとんって鳴るの？", "a": "レールのつなぎ目をこえるときの音、らしいです。リズム、すき。", "image": null, "draft": true },
+    { "q": "なんで、月は毎日かたちが変わるの？", "a": "太陽の光が当たって見える場所が、すこしずつずれるから。つきみ先輩に聞いた。", "image": null, "draft": true },
+    { "q": "なんで、サウナのあとは気持ちいいの？", "a": "あつい → つめたい → ふわー。観察結果：さいこう。", "image": null, "draft": true },
+    { "q": "なんで、ねこはせまいところが好きなの？", "a": "ぴったりだと、安心するのかも。ぺーたんもバッグが好き。", "image": null, "draft": true }
+  ],
+  "discoveries": [
+    { "id": "card-01", "no": 1, "title": "はじめての観察", "text": "ノートをひらいた。ここから、はじまり。", "image": null, "hint": "「観察ノートをひらく」を押してみて", "reward": null, "draft": true },
+    { "id": "card-02", "no": 2, "title": "また来たね", "text": "2回目の観察。おぼえてるよ。", "image": null, "hint": "また、あした来てね", "reward": null, "draft": true },
+    { "id": "card-03", "no": 3, "title": "ぺーたん発見", "text": "バッグのなかに、ぺーたん。ぺたん！", "image": null, "hint": "部屋のどこかに、ぺーたんがいるよ", "reward": null, "draft": true },
+    { "id": "card-04", "no": 4, "title": "おこりんぼ", "text": "つつきすぎ注意。でも、ちょっとうれしい。", "image": null, "hint": "みるを、なんども……？", "reward": null, "draft": true },
+    { "id": "card-05", "no": 5, "title": "おひるね", "text": "本の上で、すやすや。起こさないでね。", "image": null, "hint": "いちばん下で、だれかが寝てるよ", "reward": null, "draft": true },
+    { "id": "card-06", "no": 6, "title": "ひみつのことば", "text": "なまえを呼んだら、返事がきた。", "image": null, "hint": "キーボードで、なまえを打ってみて", "reward": null, "draft": true },
+    { "id": "card-07", "no": 7, "title": "ちいさな？", "text": "あたりまえの中に、まだ知らないこと。", "image": null, "hint": "ページのどこかに、ちいさな「？」", "reward": null, "draft": true },
+    { "id": "card-08", "no": 8, "title": "夜ふかし観察", "text": "夜の地球は、星がちかい。", "image": null, "hint": "夜（19時〜）に来てみて", "reward": null, "draft": true },
+    { "id": "card-09", "no": 9, "title": "朝の観察", "text": "朝のパンのにおい、観察完了。", "image": null, "hint": "朝（5時〜10時）に来てみて", "reward": null, "draft": true },
+    { "id": "card-10", "no": 10, "title": "地球の電波", "text": "これは地球の電波ですか？", "image": null, "hint": "部屋のラジオ、さわってみた？", "reward": null, "draft": true },
+    { "id": "card-11", "no": 11, "title": "ぺーたんの寝言", "text": "むにゃ……パン……。", "image": null, "hint": "しばらく何もしないと……？", "reward": null, "draft": true },
+    { "id": "card-12", "no": 12, "title": "ギャラリー探検", "text": "テーマを3つ、のぞいてみた。", "image": null, "hint": "ギャラリーのテーマを、いろいろ選んでみて", "reward": null, "draft": true }
+  ],
+  "discoveryReward": {
+    "_howto": "観察カードを全部集めたときに解放されるおまけ。items に壁紙などのパスを入れる（いまは既存の壁紙を仮置き）。",
+    "draft": true,
+    "title": "ぜんぶ観察できたね！",
+    "text": "おれいに、ひみつの壁紙をどうぞ。",
+    "items": [
+      { "label": "星あかりの壁紙", "src": "assets/wall/footer-starlight-01.webp", "thumb": "assets/wall/footer-starlight-01-tiny.webp" }
+    ]
+  },
+  "emptyStates": {
+    "_howto": "データが空のときの見せ方。draft:true の間は本番では従来どおり（空なら見出しごと非表示）。",
+    "draft": true,
+    "schedule": {
+      "title": "今週は、観察おやすみちゅう。",
+      "text": "次の観測予定は、Xでおしらせするね。",
+      "linkLabel": "Xを見にいく",
+      "link": "https://x.com/miru_hoshimugi"
+    }
+  },
   "_howto_drafts": "draft:true の項目（relationship・faq など）は本番に出ません。URL に ?draft=1 を付けると「仮置き」札付きで確認できます。本人確認後に draft を外してください。"
 }

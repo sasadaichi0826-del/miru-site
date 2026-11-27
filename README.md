@@ -32,6 +32,13 @@ python3 -m http.server 8000
 ## 更新を Claude に頼むとき
 「お知らせに◯◯を追加して」「このドライブ画像をギャラリーに追加して」と伝えれば `data/site.json` を更新します。
 
+## 観察基地の演出（2026-11-27 Phase 1）
+- 演出は `assets/play.js` / `assets/play.css`。動きの時間は `play.css` 冒頭の CSS 変数（`--t-hover` など）で一元管理。
+- `site.json` に追加したキー：`room`（部屋とホットスポット）、`reactions`（みるの台詞）、`greetings`（時間帯の挨拶・再訪）、`daily`（きょうの なんで？）、`discoveries`（観察カード12枚）、`discoveryReward`（全部集めたときのおまけ）、`emptyStates`（予定が空のとき）、`wallpapers.timeOfDay`（時間帯ごとの最初の壁紙）。
+- 新しい台詞・文言はすべて `draft: true`（本番では非表示）。`?draft=1` で確認、`?debug=1` で全演出を手動で発火できる（`&tod=evening` で時間帯も切替）。本人確認が済んだら `draft` を外す。
+- 部屋の絵が届いたら `room.image.pc` / `room.image.sp` に webp のパスを入れ、ホットスポットの座標（%）を合わせる。
+- 「うごきをへらす」トグルの状態は localStorage の `miru-motion`。観察カードは `miru-cards`、訪問回数は `miru-visits`。
+
 ## 一覧サムネイル
 
 ギャラリーの `thumb` は `assets/gallery/` 内の一覧用画像です。原寸画像の `drive` は保持し、クリック時の拡大表示に使います。Googleドライブのサムネイル埋め込みが閲覧環境によって失敗するため、一覧用画像198件（合計約21MB）はGitHub Pagesから配信しています。

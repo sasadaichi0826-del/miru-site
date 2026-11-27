@@ -11,7 +11,7 @@
     const preview = new URLSearchParams(location.search).has('draft');
     const isDraft = o => !preview && o && o.draft === true;
     const badge = o => (preview && o && o.draft === true) ? '<span class="draft-badge">仮置き・本人確認前</span>' : '';
-    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduced = window.miruReduced ? window.miruReduced() : matchMedia('(prefers-reduced-motion: reduce)').matches;
     const chars = data.characters || [];
     const G = data.gallery || [];
     const byId = id => G.find(g => g.id === id);

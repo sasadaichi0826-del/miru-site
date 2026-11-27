@@ -5,7 +5,9 @@
   const $$ = s => [...document.querySelectorAll(s)];
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const get = path => path.split('.').reduce((o, k) => o?.[k], data);
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // 端末設定か「うごきをへらす」トグル（index.html の head で定義）。R() は途中で切り替えても追従する
+  const R = () => (window.miruReduced ? window.miruReduced() : matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const reduced = R();
   const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
 
   // 画像：一覧用は Pages 配信の thumb、拡大はドライブ
@@ -107,12 +109,12 @@
       $('#hero-bubble').textContent = s.caption || 'きょうも、地球観察ちゅう。';
       heroDots.querySelectorAll('button').forEach((b, i) => b.setAttribute('aria-current', i === heroIdx));
     };
-    if (!animate || reduced) { apply(); return; }
+    if (!animate || R()) { apply(); return; }
     $('#hero-stage').classList.add('flip');
     setTimeout(() => { apply(); $('#hero-stage').classList.remove('flip'); }, 260);
   };
   heroDots.innerHTML = slides.map((s, i) => `<button type="button" aria-label="${esc(s.title || `画像 ${i + 1}`)}"></button>`).join('');
-  const restartHero = () => { clearInterval(heroTimer); if (heroPlaying && slides.length > 1) heroTimer = setInterval(() => showHero(heroIdx + 1), 5000); };
+  const restartHero = () => { clearInterval(heroTimer); if (heroPlaying && slides.length > 1) heroTimer = setInterval(() => { if (!R()) showHero(heroIdx + 1); }, 5000); };
   heroDots.addEventListener('click', e => { const i = [...heroDots.children].indexOf(e.target); if (i >= 0) { showHero(i); restartHero(); } });
   $('#hero-prev').onclick = () => { showHero(heroIdx - 1); restartHero(); };
   $('#hero-next').onclick = () => { showHero(heroIdx + 1); restartHero(); };
@@ -375,6 +377,7 @@
   let mx = 0, my = 0, ticking = false;
   const apply = () => {
     ticking = false;
+    if (R()) { layers.forEach(l => { l.style.transform = ''; }); return; }
     const sy = scrollY;
     layers.forEach(l => {
       const d = +l.dataset.depth, inSky = !!l.closest('.sky');
@@ -387,7 +390,7 @@
     addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; req(); }, { passive: true });
     let last = 0;
     addEventListener('pointermove', e => {
-      const now = performance.now(); if (now - last < 70) return; last = now;
+      const now = performance.now(); if (now - last < 70 || R()) return; last = now;
       const s = document.createElement('span');
       s.className = 'dust'; s.textContent = Math.random() < .5 ? '✦' : '·';
       s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
@@ -397,7 +400,7 @@
   }
   document.addEventListener('pointerover', e => {
     const a = e.target.closest('.lk, .quick a, .btn');
-    if (!a || a.contains(e.relatedTarget)) return;
+    if (!a || a.contains(e.relatedTarget) || R()) return;
     const b = document.createElement('span');
     b.className = 'burst'; b.textContent = '✦';
     b.style.left = (a.offsetWidth * (.2 + Math.random() * .6)) + 'px'; b.style.top = '-4px';
@@ -408,6 +411,6 @@
 
   // ぺーたんがトーストを運んで、ときどき横切る
   const v = $('#visitor');
-  const visit = () => { if (document.hidden) return; v.classList.remove('go'); void v.offsetWidth; v.classList.add('go'); };
+  const visit = () => { if (document.hidden || R()) return; v.classList.remove('go'); void v.offsetWidth; v.classList.add('go'); };
   setTimeout(() => { visit(); setInterval(visit, 180000); }, 20000);
 })();

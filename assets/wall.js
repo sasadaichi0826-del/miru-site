@@ -8,7 +8,8 @@
   const cfg = data?.wallpapers;
   if (!cfg?.sets) return;
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const R = () => (window.miruReduced ? window.miruReduced() : matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const reduced = R();
   const mobile = matchMedia('(max-width: 768px)').matches;
   const conn = navigator.connection || {};
   const slow = conn.saveData === true || ['slow-2g', '2g', '3g'].includes(conn.effectiveType);
@@ -73,7 +74,7 @@
   };
   const tick = () => {
     const list = cfg.sets[setName] || [];
-    if (list.length < 2 || document.hidden) return;
+    if (list.length < 2 || document.hidden || R()) return;
     idx = (idx + 1) % list.length;
     show(list[idx]);
     preload(list[(idx + 1) % list.length].src); // 先読みは次の1枚だけ
@@ -82,11 +83,14 @@
   const useSet = name => {
     if (!cfg.sets[name] || name === setName) return;
     if (still && setName) return; // 静止モードでは最初の1枚のまま
-    setName = name; idx = 0;
+    // ヒーローの組は、訪問者の時間帯（P1-F・html[data-tod]）に合った1枚から始める
+    const tod = cfg.timeOfDay?.[document.documentElement.dataset.tod];
     const list = cfg.sets[name];
-    show(list[0]);
+    setName = name; idx = name === map.home && Number.isInteger(tod) ? tod % list.length : 0;
+    show(list[idx]);
     // 次の1枚の先読みは、ページの読み込みが終わってから（初回ロードを軽くする）
-    if (!still && list[1]) afterLoad(() => preload(list[1].src));
+    const nx = list[(idx + 1) % list.length];
+    if (!still && list.length > 1) afterLoad(() => preload(nx.src));
     restart();
     stage.dataset.set = name;
   };

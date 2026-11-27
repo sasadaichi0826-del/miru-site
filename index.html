@@ -10,10 +10,20 @@
 <meta property="og:image" content="assets/img/miru-front.webp">
 <script>
   (function () {
-    var t; try { t = localStorage.getItem('miru-time'); } catch (e) {}
+    var d = document.documentElement, t, m;
+    try { t = localStorage.getItem('miru-time'); m = localStorage.getItem('miru-motion'); } catch (e) {}
+    // 時間帯（P1-F）：朝5〜10／昼10〜16／夕16〜19／夜19〜5。?debug=1 のときだけ &tod= で上書きできる
     var h = new Date().getHours();
-    document.documentElement.dataset.time = t || (h >= 18 || h < 6 ? 'night' : 'day');
-    document.documentElement.classList.add('js');
+    var q = /[?&]debug/.test(location.search) && location.search.match(/[?&]tod=(morning|day|evening|night)/);
+    var tod = q ? q[1] : h >= 5 && h < 10 ? 'morning' : h >= 10 && h < 16 ? 'day' : h >= 16 && h < 19 ? 'evening' : 'night';
+    d.dataset.tod = tod;
+    // 昼夜モードは既存の手動切替（miru-time）を優先し、未設定なら時間帯に連動
+    d.dataset.time = t || (tod === 'night' ? 'night' : 'day');
+    // 「うごきをへらす」（端末設定 prefers-reduced-motion か、サイト上のトグル）
+    if (m === 'reduce') d.dataset.motion = 'reduce';
+    var mq = window.matchMedia ? matchMedia('(prefers-reduced-motion: reduce)') : null;
+    window.miruReduced = function () { return !!(mq && mq.matches) || d.dataset.motion === 'reduce'; };
+    d.classList.add('js');
   })();
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,6 +31,7 @@
 <link rel="preload" href="assets/fonts/MiruHead-800.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/ShuwaMaru-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/style.css?v=b9-20261127">
+<link rel="stylesheet" href="assets/play.css?v=p1-20261127">
 </head>
 <body>
 <a class="skip" href="#profile">本文へ移動</a>
@@ -35,6 +46,7 @@
   <nav aria-label="ページ内">
     <a href="#profile">キャラクター</a><a href="#news">お知らせ</a><a href="#videos">動画</a><a href="#music">音楽室</a><a href="#story">物語</a><a href="#gallery">ギャラリー</a><a href="#links">リンク</a>
   </nav>
+  <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false"><span class="mt-dot" aria-hidden="true"></span>うごきをへらす</button>
   <button class="time-toggle" id="time-toggle" type="button" aria-label="昼と夜を切り替える"><span class="sun">☀</span><span class="moon">☾</span></button>
 </header>
 
@@ -241,10 +253,11 @@
 </dialog>
 <script src="assets/lib/gsap.min.js?v=3.12.5"></script>
 <script src="assets/lib/ScrollTrigger.min.js?v=3.12.5"></script>
-<script src="assets/motion.js?v=budget-20261126"></script>
-<script src="assets/app.js?v=b7-20261126"></script>
-<script src="assets/wall.js?v=lcp-20261126"></script>
+<script src="assets/motion.js?v=p1-20261127"></script>
+<script src="assets/app.js?v=p1-20261127"></script>
+<script src="assets/wall.js?v=p1-20261127"></script>
 <script src="assets/fonts/shuwa-chars.js?v=font-20261126"></script>
-<script src="assets/character.js?v=assets-20261126"></script>
+<script src="assets/character.js?v=p1-20261127"></script>
+<script src="assets/play.js?v=p1-20261127"></script>
 </body>
 </html>

@@ -4,7 +4,8 @@
 // - canvas 粒子：ヒーローの星屑と音楽室の泡だけ。最大60個、モバイルと reduced-motion では無効、画面外では停止
 // アニメーションは transform / opacity（と SVG の stroke-dashoffset）のみ。
 (() => {
-  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const R = () => (window.miruReduced ? window.miruReduced() : matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const reduced = R();
   const mobile = matchMedia('(max-width: 768px)').matches;
   const gsap = window.gsap, ST = window.ScrollTrigger;
   if (!gsap || !ST) return; // 予備の出現処理は app.js 側にある
@@ -49,6 +50,7 @@
       : { x: Math.random() * w, y: h + Math.random() * h * .5, r: 2 + Math.random() * 7, t: Math.random() * 6.28, s: .02, vy: -.25 - Math.random() * .6 });
     const frame = () => {
       ctx.clearRect(0, 0, w, h);
+      if (R()) { on = false; return; } // 「うごきをへらす」を途中でONにしたら止める
       for (const p of ps) {
         p.t += p.s; p.y += p.vy;
         if (kind === 'stars') {
@@ -67,14 +69,16 @@
       }
       raf = requestAnimationFrame(frame);
     };
-    const start = () => { if (on || document.hidden) return; on = true; raf = requestAnimationFrame(frame); };
+    const start = () => { if (on || document.hidden || R()) return; on = true; raf = requestAnimationFrame(frame); };
     const stop = () => { on = false; cancelAnimationFrame(raf); };
     resize();
     for (let i = 0; i < N; i++) ps.push(spawn());
     addEventListener('resize', resize, { passive: true });
     // 画面外・タブが裏のときは止める
     new IntersectionObserver(es => es.forEach(e => (e.isIntersecting ? start() : stop()))).observe(host);
-    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : (host.getBoundingClientRect().bottom > 0 && host.getBoundingClientRect().top < innerHeight && start())));
+    const resume = () => (document.hidden ? stop() : (host.getBoundingClientRect().bottom > 0 && host.getBoundingClientRect().top < innerHeight && start()));
+    document.addEventListener('visibilitychange', resume);
+    document.addEventListener('miru:motion', resume); // トグルを OFF に戻したら再開
   };
   const boot = () => { particles(document.querySelector('.hero'), 'stars'); particles(document.querySelector('#music'), 'bubbles'); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
